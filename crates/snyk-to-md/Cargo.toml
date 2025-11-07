@@ -1,0 +1,19 @@
+[package]
+name = "snyk-to-md"
+version = "0.1.0"
+edition = "2021"
+authors = ["Nelson Silva <nelson.emanuel.silva@>"]
+description = "A CLI to convert Snyk JSON reports into unified Markdown files."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/fulgas/snyk-to-md"
+keywords = ["snyk", "markdown", "vulnerability", "cli"]
+categories = ["command-line-utilities"]
+
+[[bin]]
+name = "snyk-to-md"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5.51", features = ["derive"] }
+anyhow = "1.0.100"
+snyk-to-md-core = { path = "../core" }
