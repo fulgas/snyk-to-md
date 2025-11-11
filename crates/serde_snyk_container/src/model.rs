@@ -1,6 +1,6 @@
-/// Error types.
+#[doc = r" Error types."]
 pub mod error {
-    /// Error from a `TryFrom` or `FromStr` implementation.
+    #[doc = r" Error from a `TryFrom` or `FromStr` implementation."]
     pub struct ConversionError(::std::borrow::Cow<'static, str>);
     impl ::std::error::Error for ConversionError {}
     impl ::std::fmt::Display for ConversionError {
@@ -24,25 +24,25 @@ pub mod error {
         }
     }
 }
-///`Filtered`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "ignore": {
-///      "type": "array"
-///    },
-///    "patch": {
-///      "type": "array"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`Filtered`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"ignore\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    },"]
+#[doc = "    \"patch\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct Filtered {
     #[serde(default, skip_serializing_if = "::std::vec::Vec::is_empty")]
     pub ignore: ::std::vec::Vec<::serde_json::Value>,
@@ -62,28 +62,28 @@ impl ::std::default::Default for Filtered {
         }
     }
 }
-///`IgnoreSettings`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "adminOnly": {
-///      "type": "boolean"
-///    },
-///    "disregardFilesystemIgnores": {
-///      "type": "boolean"
-///    },
-///    "reasonRequired": {
-///      "type": "boolean"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`IgnoreSettings`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"adminOnly\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"disregardFilesystemIgnores\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"reasonRequired\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct IgnoreSettings {
     #[serde(
         rename = "adminOnly",
@@ -118,821 +118,821 @@ impl ::std::default::Default for IgnoreSettings {
         }
     }
 }
-///Synk Container JSON Schema
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "title": "Snyk Container",
-///  "description": "Synk Container JSON Schema",
-///  "type": "object",
-///  "required": [
-///    "org",
-///    "projectName",
-///    "targetFile",
-///    "uniqueCount",
-///    "vulnerabilities"
-///  ],
-///  "properties": {
-///    "applications": {
-///      "type": "array",
-///      "items": {
-///        "type": "object",
-///        "required": [
-///          "org",
-///          "projectName",
-///          "targetFile",
-///          "uniqueCount",
-///          "vulnerabilities"
-///        ],
-///        "properties": {
-///          "dependencyCount": {
-///            "type": "number"
-///          },
-///          "displayTargetFile": {
-///            "type": "string"
-///          },
-///          "docker": {
-///            "type": "object"
-///          },
-///          "filesystemPolicy": {
-///            "type": "boolean"
-///          },
-///          "filtered": {
-///            "$ref": "#/definitions/filtered"
-///          },
-///          "hasUnknownVersions": {
-///            "type": "boolean"
-///          },
-///          "ignoreSettings": {
-///            "$ref": "#/definitions/ignoreSettings"
-///          },
-///          "isPrivate": {
-///            "type": "boolean"
-///          },
-///          "licensesPolicy": {
-///            "type": "object",
-///            "properties": {
-///              "orgLicenseRules": {
-///                "type": "object",
-///                "properties": {
-///                  "AGPL-1.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "AGPL-3.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "Artistic-1.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "Artistic-2.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "CDDL-1.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "CPOL-1.02": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "EPL-1.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "GPL-2.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "GPL-3.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "LGPL-2.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "LGPL-2.1": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "LGPL-3.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "MPL-1.1": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "MPL-2.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "MS-RL": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  },
-///                  "SimPL-2.0": {
-///                    "type": "object",
-///                    "properties": {
-///                      "instructions": {
-///                        "type": "string"
-///                      },
-///                      "licenseType": {
-///                        "type": "string"
-///                      },
-///                      "severity": {
-///                        "type": "string"
-///                      }
-///                    }
-///                  }
-///                }
-///              },
-///              "severities": {
-///                "type": "object"
-///              }
-///            }
-///          },
-///          "ok": {
-///            "type": "boolean"
-///          },
-///          "org": {
-///            "type": "string"
-///          },
-///          "packageManager": {
-///            "type": "string"
-///          },
-///          "path": {
-///            "type": "string"
-///          },
-///          "policy": {
-///            "type": "string"
-///          },
-///          "projectName": {
-///            "type": "string"
-///          },
-///          "remediation": {
-///            "type": "object",
-///            "properties": {
-///              "ignore": {
-///                "type": "object"
-///              },
-///              "patch": {
-///                "type": "object"
-///              },
-///              "pin": {
-///                "type": "object"
-///              },
-///              "unresolved": {
-///                "type": "array",
-///                "items": {
-///                  "type": "object",
-///                  "properties": {
-///                    "creationTime": {
-///                      "type": "string"
-///                    },
-///                    "description": {
-///                      "type": "string"
-///                    },
-///                    "from": {
-///                      "type": "array",
-///                      "items": {
-///                        "type": "string"
-///                      }
-///                    },
-///                    "id": {
-///                      "type": "string"
-///                    },
-///                    "isPatchable": {
-///                      "type": "boolean"
-///                    },
-///                    "isPinnable": {
-///                      "type": "boolean"
-///                    },
-///                    "isRuntime": {
-///                      "type": "boolean"
-///                    },
-///                    "isUpgradable": {
-///                      "type": "boolean"
-///                    },
-///                    "language": {
-///                      "type": "string"
-///                    },
-///                    "license": {
-///                      "type": "string"
-///                    },
-///                    "name": {
-///                      "type": "string"
-///                    },
-///                    "packageManager": {
-///                      "type": "string"
-///                    },
-///                    "packageName": {
-///                      "type": "string"
-///                    },
-///                    "publicationTime": {
-///                      "type": "string"
-///                    },
-///                    "semver": {
-///                      "type": "object",
-///                      "properties": {
-///                        "vulnerable": {
-///                          "type": "array",
-///                          "items": {
-///                            "type": "string"
-///                          }
-///                        }
-///                      }
-///                    },
-///                    "severity": {
-///                      "type": "string"
-///                    },
-///                    "severityWithCritical": {
-///                      "type": "string"
-///                    },
-///                    "title": {
-///                      "type": "string"
-///                    },
-///                    "type": {
-///                      "type": "string"
-///                    },
-///                    "upgradePath": {
-///                      "type": "array",
-///                      "items": {
-///                        "type": [
-///                          "boolean",
-///                          "string"
-///                        ]
-///                      }
-///                    },
-///                    "version": {
-///                      "type": "string"
-///                    }
-///                  }
-///                }
-///              },
-///              "upgrade": {
-///                "type": "object",
-///                "properties": {
-///                  "ch.qos.logback:logback-core@1.5.13": {
-///                    "type": "object",
-///                    "properties": {
-///                      "upgradeTo": {
-///                        "type": "string"
-///                      },
-///                      "upgrades": {
-///                        "type": "array",
-///                        "items": {
-///                          "type": "string"
-///                        }
-///                      },
-///                      "vulns": {
-///                        "type": "array",
-///                        "items": {
-///                          "type": "string"
-///                        }
-///                      }
-///                    }
-///                  },
-///                  "org.apache.tomcat.embed:tomcat-embed-core@10.1.46": {
-///                    "type": "object",
-///                    "properties": {
-///                      "upgradeTo": {
-///                        "type": "string"
-///                      },
-///                      "upgrades": {
-///                        "type": "array",
-///                        "items": {
-///                          "type": "string"
-///                        }
-///                      },
-///                      "vulns": {
-///                        "type": "array",
-///                        "items": {
-///                          "type": "string"
-///                        }
-///                      }
-///                    }
-///                  }
-///                }
-///              }
-///            }
-///          },
-///          "summary": {
-///            "type": "string"
-///          },
-///          "targetFile": {
-///            "type": "string"
-///          },
-///          "uniqueCount": {
-///            "type": "integer"
-///          },
-///          "vulnerabilities": {
-///            "$ref": "#/definitions/vulnerabilities"
-///          }
-///        }
-///      }
-///    },
-///    "dependencyCount": {
-///      "type": "number"
-///    },
-///    "displayTargetFile": {
-///      "type": "string"
-///    },
-///    "docker": {
-///      "type": "object",
-///      "properties": {
-///        "baseImage": {
-///          "type": "string"
-///        },
-///        "baseImageRemediation": {
-///          "type": "object",
-///          "properties": {
-///            "advice": {
-///              "type": "array",
-///              "items": {
-///                "type": "object",
-///                "properties": {
-///                  "bold": {
-///                    "type": "boolean"
-///                  },
-///                  "message": {
-///                    "type": "string"
-///                  }
-///                }
-///              }
-///            },
-///            "code": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "binariesVulns": {
-///          "type": "object",
-///          "properties": {
-///            "affectedPkgs": {
-///              "type": "object"
-///            },
-///            "issuesData": {
-///              "type": "object"
-///            }
-///          }
-///        },
-///        "os": {
-///          "type": "object",
-///          "properties": {
-///            "prettyName": {
-///              "type": "string"
-///            }
-///          }
-///        }
-///      }
-///    },
-///    "filesystemPolicy": {
-///      "type": "boolean"
-///    },
-///    "filtered": {
-///      "$ref": "#/definitions/filtered"
-///    },
-///    "hasUnknownVersions": {
-///      "type": "boolean"
-///    },
-///    "ignoreSettings": {
-///      "$ref": "#/definitions/ignoreSettings"
-///    },
-///    "isPrivate": {
-///      "type": "boolean"
-///    },
-///    "licensesPolicy": {
-///      "type": "object",
-///      "properties": {
-///        "orgLicenseRules": {
-///          "type": "object",
-///          "properties": {
-///            "AGPL-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "AGPL-3.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "Artistic-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "Artistic-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "CDDL-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "CPOL-1.02": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "EPL-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "GPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "GPL-3.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "LGPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "LGPL-2.1": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "LGPL-3.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "MPL-1.1": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "MPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "MS-RL": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "SimPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            }
-///          }
-///        },
-///        "severities": {
-///          "type": "object"
-///        }
-///      }
-///    },
-///    "ok": {
-///      "type": "boolean"
-///    },
-///    "org": {
-///      "type": "string"
-///    },
-///    "packageManager": {
-///      "type": "string"
-///    },
-///    "path": {
-///      "type": "string"
-///    },
-///    "platform": {
-///      "type": "string"
-///    },
-///    "policy": {
-///      "type": "string"
-///    },
-///    "projectName": {
-///      "type": "string"
-///    },
-///    "summary": {
-///      "type": "string"
-///    },
-///    "targetFile": {
-///      "type": "string"
-///    },
-///    "uniqueCount": {
-///      "type": "integer"
-///    },
-///    "vulnerabilities": {
-///      "$ref": "#/definitions/vulnerabilities"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "Synk Container JSON Schema"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"title\": \"Snyk Container\","]
+#[doc = "  \"description\": \"Synk Container JSON Schema\","]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"required\": ["]
+#[doc = "    \"org\","]
+#[doc = "    \"projectName\","]
+#[doc = "    \"targetFile\","]
+#[doc = "    \"uniqueCount\","]
+#[doc = "    \"vulnerabilities\""]
+#[doc = "  ],"]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"applications\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"required\": ["]
+#[doc = "          \"org\","]
+#[doc = "          \"projectName\","]
+#[doc = "          \"targetFile\","]
+#[doc = "          \"uniqueCount\","]
+#[doc = "          \"vulnerabilities\""]
+#[doc = "        ],"]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"dependencyCount\": {"]
+#[doc = "            \"type\": \"number\""]
+#[doc = "          },"]
+#[doc = "          \"displayTargetFile\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"docker\": {"]
+#[doc = "            \"type\": \"object\""]
+#[doc = "          },"]
+#[doc = "          \"filesystemPolicy\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"filtered\": {"]
+#[doc = "            \"$ref\": \"#/definitions/filtered\""]
+#[doc = "          },"]
+#[doc = "          \"hasUnknownVersions\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"ignoreSettings\": {"]
+#[doc = "            \"$ref\": \"#/definitions/ignoreSettings\""]
+#[doc = "          },"]
+#[doc = "          \"isPrivate\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"licensesPolicy\": {"]
+#[doc = "            \"type\": \"object\","]
+#[doc = "            \"properties\": {"]
+#[doc = "              \"orgLicenseRules\": {"]
+#[doc = "                \"type\": \"object\","]
+#[doc = "                \"properties\": {"]
+#[doc = "                  \"AGPL-1.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"AGPL-3.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"Artistic-1.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"Artistic-2.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"CDDL-1.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"CPOL-1.02\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"EPL-1.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"GPL-2.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"GPL-3.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"LGPL-2.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"LGPL-2.1\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"LGPL-3.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"MPL-1.1\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"MPL-2.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"MS-RL\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"SimPL-2.0\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"instructions\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"licenseType\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"severity\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  }"]
+#[doc = "                }"]
+#[doc = "              },"]
+#[doc = "              \"severities\": {"]
+#[doc = "                \"type\": \"object\""]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          },"]
+#[doc = "          \"ok\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"org\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"packageManager\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"path\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"policy\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"projectName\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"remediation\": {"]
+#[doc = "            \"type\": \"object\","]
+#[doc = "            \"properties\": {"]
+#[doc = "              \"ignore\": {"]
+#[doc = "                \"type\": \"object\""]
+#[doc = "              },"]
+#[doc = "              \"patch\": {"]
+#[doc = "                \"type\": \"object\""]
+#[doc = "              },"]
+#[doc = "              \"pin\": {"]
+#[doc = "                \"type\": \"object\""]
+#[doc = "              },"]
+#[doc = "              \"unresolved\": {"]
+#[doc = "                \"type\": \"array\","]
+#[doc = "                \"items\": {"]
+#[doc = "                  \"type\": \"object\","]
+#[doc = "                  \"properties\": {"]
+#[doc = "                    \"creationTime\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"description\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"from\": {"]
+#[doc = "                      \"type\": \"array\","]
+#[doc = "                      \"items\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      }"]
+#[doc = "                    },"]
+#[doc = "                    \"id\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"isPatchable\": {"]
+#[doc = "                      \"type\": \"boolean\""]
+#[doc = "                    },"]
+#[doc = "                    \"isPinnable\": {"]
+#[doc = "                      \"type\": \"boolean\""]
+#[doc = "                    },"]
+#[doc = "                    \"isRuntime\": {"]
+#[doc = "                      \"type\": \"boolean\""]
+#[doc = "                    },"]
+#[doc = "                    \"isUpgradable\": {"]
+#[doc = "                      \"type\": \"boolean\""]
+#[doc = "                    },"]
+#[doc = "                    \"language\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"license\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"name\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"packageManager\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"packageName\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"publicationTime\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"semver\": {"]
+#[doc = "                      \"type\": \"object\","]
+#[doc = "                      \"properties\": {"]
+#[doc = "                        \"vulnerable\": {"]
+#[doc = "                          \"type\": \"array\","]
+#[doc = "                          \"items\": {"]
+#[doc = "                            \"type\": \"string\""]
+#[doc = "                          }"]
+#[doc = "                        }"]
+#[doc = "                      }"]
+#[doc = "                    },"]
+#[doc = "                    \"severity\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"severityWithCritical\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"title\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"type\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    },"]
+#[doc = "                    \"upgradePath\": {"]
+#[doc = "                      \"type\": \"array\","]
+#[doc = "                      \"items\": {"]
+#[doc = "                        \"type\": ["]
+#[doc = "                          \"boolean\","]
+#[doc = "                          \"string\""]
+#[doc = "                        ]"]
+#[doc = "                      }"]
+#[doc = "                    },"]
+#[doc = "                    \"version\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    }"]
+#[doc = "                  }"]
+#[doc = "                }"]
+#[doc = "              },"]
+#[doc = "              \"upgrade\": {"]
+#[doc = "                \"type\": \"object\","]
+#[doc = "                \"properties\": {"]
+#[doc = "                  \"ch.qos.logback:logback-core@1.5.13\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"upgradeTo\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"upgrades\": {"]
+#[doc = "                        \"type\": \"array\","]
+#[doc = "                        \"items\": {"]
+#[doc = "                          \"type\": \"string\""]
+#[doc = "                        }"]
+#[doc = "                      },"]
+#[doc = "                      \"vulns\": {"]
+#[doc = "                        \"type\": \"array\","]
+#[doc = "                        \"items\": {"]
+#[doc = "                          \"type\": \"string\""]
+#[doc = "                        }"]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  },"]
+#[doc = "                  \"org.apache.tomcat.embed:tomcat-embed-core@10.1.46\": {"]
+#[doc = "                    \"type\": \"object\","]
+#[doc = "                    \"properties\": {"]
+#[doc = "                      \"upgradeTo\": {"]
+#[doc = "                        \"type\": \"string\""]
+#[doc = "                      },"]
+#[doc = "                      \"upgrades\": {"]
+#[doc = "                        \"type\": \"array\","]
+#[doc = "                        \"items\": {"]
+#[doc = "                          \"type\": \"string\""]
+#[doc = "                        }"]
+#[doc = "                      },"]
+#[doc = "                      \"vulns\": {"]
+#[doc = "                        \"type\": \"array\","]
+#[doc = "                        \"items\": {"]
+#[doc = "                          \"type\": \"string\""]
+#[doc = "                        }"]
+#[doc = "                      }"]
+#[doc = "                    }"]
+#[doc = "                  }"]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          },"]
+#[doc = "          \"summary\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"targetFile\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"uniqueCount\": {"]
+#[doc = "            \"type\": \"integer\""]
+#[doc = "          },"]
+#[doc = "          \"vulnerabilities\": {"]
+#[doc = "            \"$ref\": \"#/definitions/vulnerabilities\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"dependencyCount\": {"]
+#[doc = "      \"type\": \"number\""]
+#[doc = "    },"]
+#[doc = "    \"displayTargetFile\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"docker\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"baseImage\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"baseImageRemediation\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"advice\": {"]
+#[doc = "              \"type\": \"array\","]
+#[doc = "              \"items\": {"]
+#[doc = "                \"type\": \"object\","]
+#[doc = "                \"properties\": {"]
+#[doc = "                  \"bold\": {"]
+#[doc = "                    \"type\": \"boolean\""]
+#[doc = "                  },"]
+#[doc = "                  \"message\": {"]
+#[doc = "                    \"type\": \"string\""]
+#[doc = "                  }"]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"code\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"binariesVulns\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"affectedPkgs\": {"]
+#[doc = "              \"type\": \"object\""]
+#[doc = "            },"]
+#[doc = "            \"issuesData\": {"]
+#[doc = "              \"type\": \"object\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"os\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"prettyName\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"filesystemPolicy\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"filtered\": {"]
+#[doc = "      \"$ref\": \"#/definitions/filtered\""]
+#[doc = "    },"]
+#[doc = "    \"hasUnknownVersions\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"ignoreSettings\": {"]
+#[doc = "      \"$ref\": \"#/definitions/ignoreSettings\""]
+#[doc = "    },"]
+#[doc = "    \"isPrivate\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"licensesPolicy\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"orgLicenseRules\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"AGPL-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"AGPL-3.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"Artistic-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"Artistic-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"CDDL-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"CPOL-1.02\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"EPL-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"GPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"GPL-3.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"LGPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"LGPL-2.1\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"LGPL-3.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"MPL-1.1\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"MPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"MS-RL\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"SimPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"severities\": {"]
+#[doc = "          \"type\": \"object\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"ok\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"org\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"packageManager\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"path\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"platform\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"policy\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"projectName\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"summary\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"targetFile\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"uniqueCount\": {"]
+#[doc = "      \"type\": \"integer\""]
+#[doc = "    },"]
+#[doc = "    \"vulnerabilities\": {"]
+#[doc = "      \"$ref\": \"#/definitions/vulnerabilities\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainer {
     #[serde(default, skip_serializing_if = "::std::vec::Vec::is_empty")]
     pub applications: ::std::vec::Vec<SnykContainerApplicationsItem>,
@@ -1012,464 +1012,464 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
         value.clone()
     }
 }
-///`SnykContainerApplicationsItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "required": [
-///    "org",
-///    "projectName",
-///    "targetFile",
-///    "uniqueCount",
-///    "vulnerabilities"
-///  ],
-///  "properties": {
-///    "dependencyCount": {
-///      "type": "number"
-///    },
-///    "displayTargetFile": {
-///      "type": "string"
-///    },
-///    "docker": {
-///      "type": "object"
-///    },
-///    "filesystemPolicy": {
-///      "type": "boolean"
-///    },
-///    "filtered": {
-///      "$ref": "#/definitions/filtered"
-///    },
-///    "hasUnknownVersions": {
-///      "type": "boolean"
-///    },
-///    "ignoreSettings": {
-///      "$ref": "#/definitions/ignoreSettings"
-///    },
-///    "isPrivate": {
-///      "type": "boolean"
-///    },
-///    "licensesPolicy": {
-///      "type": "object",
-///      "properties": {
-///        "orgLicenseRules": {
-///          "type": "object",
-///          "properties": {
-///            "AGPL-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "AGPL-3.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "Artistic-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "Artistic-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "CDDL-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "CPOL-1.02": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "EPL-1.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "GPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "GPL-3.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "LGPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "LGPL-2.1": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "LGPL-3.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "MPL-1.1": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "MPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "MS-RL": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            },
-///            "SimPL-2.0": {
-///              "type": "object",
-///              "properties": {
-///                "instructions": {
-///                  "type": "string"
-///                },
-///                "licenseType": {
-///                  "type": "string"
-///                },
-///                "severity": {
-///                  "type": "string"
-///                }
-///              }
-///            }
-///          }
-///        },
-///        "severities": {
-///          "type": "object"
-///        }
-///      }
-///    },
-///    "ok": {
-///      "type": "boolean"
-///    },
-///    "org": {
-///      "type": "string"
-///    },
-///    "packageManager": {
-///      "type": "string"
-///    },
-///    "path": {
-///      "type": "string"
-///    },
-///    "policy": {
-///      "type": "string"
-///    },
-///    "projectName": {
-///      "type": "string"
-///    },
-///    "remediation": {
-///      "type": "object",
-///      "properties": {
-///        "ignore": {
-///          "type": "object"
-///        },
-///        "patch": {
-///          "type": "object"
-///        },
-///        "pin": {
-///          "type": "object"
-///        },
-///        "unresolved": {
-///          "type": "array",
-///          "items": {
-///            "type": "object",
-///            "properties": {
-///              "creationTime": {
-///                "type": "string"
-///              },
-///              "description": {
-///                "type": "string"
-///              },
-///              "from": {
-///                "type": "array",
-///                "items": {
-///                  "type": "string"
-///                }
-///              },
-///              "id": {
-///                "type": "string"
-///              },
-///              "isPatchable": {
-///                "type": "boolean"
-///              },
-///              "isPinnable": {
-///                "type": "boolean"
-///              },
-///              "isRuntime": {
-///                "type": "boolean"
-///              },
-///              "isUpgradable": {
-///                "type": "boolean"
-///              },
-///              "language": {
-///                "type": "string"
-///              },
-///              "license": {
-///                "type": "string"
-///              },
-///              "name": {
-///                "type": "string"
-///              },
-///              "packageManager": {
-///                "type": "string"
-///              },
-///              "packageName": {
-///                "type": "string"
-///              },
-///              "publicationTime": {
-///                "type": "string"
-///              },
-///              "semver": {
-///                "type": "object",
-///                "properties": {
-///                  "vulnerable": {
-///                    "type": "array",
-///                    "items": {
-///                      "type": "string"
-///                    }
-///                  }
-///                }
-///              },
-///              "severity": {
-///                "type": "string"
-///              },
-///              "severityWithCritical": {
-///                "type": "string"
-///              },
-///              "title": {
-///                "type": "string"
-///              },
-///              "type": {
-///                "type": "string"
-///              },
-///              "upgradePath": {
-///                "type": "array",
-///                "items": {
-///                  "type": [
-///                    "boolean",
-///                    "string"
-///                  ]
-///                }
-///              },
-///              "version": {
-///                "type": "string"
-///              }
-///            }
-///          }
-///        },
-///        "upgrade": {
-///          "type": "object",
-///          "properties": {
-///            "ch.qos.logback:logback-core@1.5.13": {
-///              "type": "object",
-///              "properties": {
-///                "upgradeTo": {
-///                  "type": "string"
-///                },
-///                "upgrades": {
-///                  "type": "array",
-///                  "items": {
-///                    "type": "string"
-///                  }
-///                },
-///                "vulns": {
-///                  "type": "array",
-///                  "items": {
-///                    "type": "string"
-///                  }
-///                }
-///              }
-///            },
-///            "org.apache.tomcat.embed:tomcat-embed-core@10.1.46": {
-///              "type": "object",
-///              "properties": {
-///                "upgradeTo": {
-///                  "type": "string"
-///                },
-///                "upgrades": {
-///                  "type": "array",
-///                  "items": {
-///                    "type": "string"
-///                  }
-///                },
-///                "vulns": {
-///                  "type": "array",
-///                  "items": {
-///                    "type": "string"
-///                  }
-///                }
-///              }
-///            }
-///          }
-///        }
-///      }
-///    },
-///    "summary": {
-///      "type": "string"
-///    },
-///    "targetFile": {
-///      "type": "string"
-///    },
-///    "uniqueCount": {
-///      "type": "integer"
-///    },
-///    "vulnerabilities": {
-///      "$ref": "#/definitions/vulnerabilities"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"required\": ["]
+#[doc = "    \"org\","]
+#[doc = "    \"projectName\","]
+#[doc = "    \"targetFile\","]
+#[doc = "    \"uniqueCount\","]
+#[doc = "    \"vulnerabilities\""]
+#[doc = "  ],"]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"dependencyCount\": {"]
+#[doc = "      \"type\": \"number\""]
+#[doc = "    },"]
+#[doc = "    \"displayTargetFile\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"docker\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    },"]
+#[doc = "    \"filesystemPolicy\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"filtered\": {"]
+#[doc = "      \"$ref\": \"#/definitions/filtered\""]
+#[doc = "    },"]
+#[doc = "    \"hasUnknownVersions\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"ignoreSettings\": {"]
+#[doc = "      \"$ref\": \"#/definitions/ignoreSettings\""]
+#[doc = "    },"]
+#[doc = "    \"isPrivate\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"licensesPolicy\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"orgLicenseRules\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"AGPL-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"AGPL-3.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"Artistic-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"Artistic-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"CDDL-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"CPOL-1.02\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"EPL-1.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"GPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"GPL-3.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"LGPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"LGPL-2.1\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"LGPL-3.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"MPL-1.1\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"MPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"MS-RL\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"SimPL-2.0\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"instructions\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"licenseType\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"severity\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"severities\": {"]
+#[doc = "          \"type\": \"object\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"ok\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"org\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"packageManager\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"path\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"policy\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"projectName\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"remediation\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"ignore\": {"]
+#[doc = "          \"type\": \"object\""]
+#[doc = "        },"]
+#[doc = "        \"patch\": {"]
+#[doc = "          \"type\": \"object\""]
+#[doc = "        },"]
+#[doc = "        \"pin\": {"]
+#[doc = "          \"type\": \"object\""]
+#[doc = "        },"]
+#[doc = "        \"unresolved\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"object\","]
+#[doc = "            \"properties\": {"]
+#[doc = "              \"creationTime\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"description\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"from\": {"]
+#[doc = "                \"type\": \"array\","]
+#[doc = "                \"items\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              },"]
+#[doc = "              \"id\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"isPatchable\": {"]
+#[doc = "                \"type\": \"boolean\""]
+#[doc = "              },"]
+#[doc = "              \"isPinnable\": {"]
+#[doc = "                \"type\": \"boolean\""]
+#[doc = "              },"]
+#[doc = "              \"isRuntime\": {"]
+#[doc = "                \"type\": \"boolean\""]
+#[doc = "              },"]
+#[doc = "              \"isUpgradable\": {"]
+#[doc = "                \"type\": \"boolean\""]
+#[doc = "              },"]
+#[doc = "              \"language\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"license\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"name\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"packageManager\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"packageName\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"publicationTime\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"semver\": {"]
+#[doc = "                \"type\": \"object\","]
+#[doc = "                \"properties\": {"]
+#[doc = "                  \"vulnerable\": {"]
+#[doc = "                    \"type\": \"array\","]
+#[doc = "                    \"items\": {"]
+#[doc = "                      \"type\": \"string\""]
+#[doc = "                    }"]
+#[doc = "                  }"]
+#[doc = "                }"]
+#[doc = "              },"]
+#[doc = "              \"severity\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"severityWithCritical\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"title\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"type\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"upgradePath\": {"]
+#[doc = "                \"type\": \"array\","]
+#[doc = "                \"items\": {"]
+#[doc = "                  \"type\": ["]
+#[doc = "                    \"boolean\","]
+#[doc = "                    \"string\""]
+#[doc = "                  ]"]
+#[doc = "                }"]
+#[doc = "              },"]
+#[doc = "              \"version\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"upgrade\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"ch.qos.logback:logback-core@1.5.13\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"upgradeTo\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"upgrades\": {"]
+#[doc = "                  \"type\": \"array\","]
+#[doc = "                  \"items\": {"]
+#[doc = "                    \"type\": \"string\""]
+#[doc = "                  }"]
+#[doc = "                },"]
+#[doc = "                \"vulns\": {"]
+#[doc = "                  \"type\": \"array\","]
+#[doc = "                  \"items\": {"]
+#[doc = "                    \"type\": \"string\""]
+#[doc = "                  }"]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"org.apache.tomcat.embed:tomcat-embed-core@10.1.46\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"upgradeTo\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"upgrades\": {"]
+#[doc = "                  \"type\": \"array\","]
+#[doc = "                  \"items\": {"]
+#[doc = "                    \"type\": \"string\""]
+#[doc = "                  }"]
+#[doc = "                },"]
+#[doc = "                \"vulns\": {"]
+#[doc = "                  \"type\": \"array\","]
+#[doc = "                  \"items\": {"]
+#[doc = "                    \"type\": \"string\""]
+#[doc = "                  }"]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"summary\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"targetFile\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"uniqueCount\": {"]
+#[doc = "      \"type\": \"integer\""]
+#[doc = "    },"]
+#[doc = "    \"vulnerabilities\": {"]
+#[doc = "      \"$ref\": \"#/definitions/vulnerabilities\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItem {
     #[serde(
         rename = "dependencyCount",
@@ -1547,251 +1547,251 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
         value.clone()
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicy`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "orgLicenseRules": {
-///      "type": "object",
-///      "properties": {
-///        "AGPL-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "AGPL-3.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "Artistic-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "Artistic-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "CDDL-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "CPOL-1.02": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "EPL-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "GPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "GPL-3.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "LGPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "LGPL-2.1": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "LGPL-3.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "MPL-1.1": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "MPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "MS-RL": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "SimPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        }
-///      }
-///    },
-///    "severities": {
-///      "type": "object"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicy`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"orgLicenseRules\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"AGPL-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"AGPL-3.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"Artistic-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"Artistic-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"CDDL-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"CPOL-1.02\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"EPL-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"GPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"GPL-3.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"LGPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"LGPL-2.1\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"LGPL-3.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"MPL-1.1\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"MPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"MS-RL\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"SimPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"severities\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicy {
     #[serde(
         rename = "orgLicenseRules",
@@ -1818,243 +1818,243 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRules`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "AGPL-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "AGPL-3.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "Artistic-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "Artistic-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "CDDL-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "CPOL-1.02": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "EPL-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "GPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "GPL-3.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "LGPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "LGPL-2.1": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "LGPL-3.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "MPL-1.1": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "MPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "MS-RL": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "SimPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRules`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"AGPL-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"AGPL-3.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"Artistic-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"Artistic-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"CDDL-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"CPOL-1.02\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"EPL-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"GPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"GPL-3.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"LGPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"LGPL-2.1\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"LGPL-3.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"MPL-1.1\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"MPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"MS-RL\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"SimPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRules {
     #[serde(
         rename = "AGPL-1.0",
@@ -2198,28 +2198,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2248,28 +2248,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl30`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl30`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl30 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2298,28 +2298,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2350,28 +2350,28 @@ impl ::std::default::Default
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2402,28 +2402,28 @@ impl ::std::default::Default
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCddl10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCddl10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCddl10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2452,28 +2452,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCpol102`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCpol102`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCpol102 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2502,28 +2502,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesEpl10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesEpl10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesEpl10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2552,28 +2552,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2602,28 +2602,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl30`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl30`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl30 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2652,28 +2652,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2702,28 +2702,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl21`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl21`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl21 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2752,28 +2752,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl30`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl30`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl30 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2802,28 +2802,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl11`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl11`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl11 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2852,28 +2852,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2902,28 +2902,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMsRl`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMsRl`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMsRl {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -2952,28 +2952,28 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesSimPl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesSimPl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesSimPl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -3002,161 +3002,161 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
         }
     }
 }
-///`SnykContainerApplicationsItemRemediation`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "ignore": {
-///      "type": "object"
-///    },
-///    "patch": {
-///      "type": "object"
-///    },
-///    "pin": {
-///      "type": "object"
-///    },
-///    "unresolved": {
-///      "type": "array",
-///      "items": {
-///        "type": "object",
-///        "properties": {
-///          "creationTime": {
-///            "type": "string"
-///          },
-///          "description": {
-///            "type": "string"
-///          },
-///          "from": {
-///            "type": "array",
-///            "items": {
-///              "type": "string"
-///            }
-///          },
-///          "id": {
-///            "type": "string"
-///          },
-///          "isPatchable": {
-///            "type": "boolean"
-///          },
-///          "isPinnable": {
-///            "type": "boolean"
-///          },
-///          "isRuntime": {
-///            "type": "boolean"
-///          },
-///          "isUpgradable": {
-///            "type": "boolean"
-///          },
-///          "language": {
-///            "type": "string"
-///          },
-///          "license": {
-///            "type": "string"
-///          },
-///          "name": {
-///            "type": "string"
-///          },
-///          "packageManager": {
-///            "type": "string"
-///          },
-///          "packageName": {
-///            "type": "string"
-///          },
-///          "publicationTime": {
-///            "type": "string"
-///          },
-///          "semver": {
-///            "type": "object",
-///            "properties": {
-///              "vulnerable": {
-///                "type": "array",
-///                "items": {
-///                  "type": "string"
-///                }
-///              }
-///            }
-///          },
-///          "severity": {
-///            "type": "string"
-///          },
-///          "severityWithCritical": {
-///            "type": "string"
-///          },
-///          "title": {
-///            "type": "string"
-///          },
-///          "type": {
-///            "type": "string"
-///          },
-///          "upgradePath": {
-///            "type": "array",
-///            "items": {
-///              "type": [
-///                "boolean",
-///                "string"
-///              ]
-///            }
-///          },
-///          "version": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "upgrade": {
-///      "type": "object",
-///      "properties": {
-///        "ch.qos.logback:logback-core@1.5.13": {
-///          "type": "object",
-///          "properties": {
-///            "upgradeTo": {
-///              "type": "string"
-///            },
-///            "upgrades": {
-///              "type": "array",
-///              "items": {
-///                "type": "string"
-///              }
-///            },
-///            "vulns": {
-///              "type": "array",
-///              "items": {
-///                "type": "string"
-///              }
-///            }
-///          }
-///        },
-///        "org.apache.tomcat.embed:tomcat-embed-core@10.1.46": {
-///          "type": "object",
-///          "properties": {
-///            "upgradeTo": {
-///              "type": "string"
-///            },
-///            "upgrades": {
-///              "type": "array",
-///              "items": {
-///                "type": "string"
-///              }
-///            },
-///            "vulns": {
-///              "type": "array",
-///              "items": {
-///                "type": "string"
-///              }
-///            }
-///          }
-///        }
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemRemediation`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"ignore\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    },"]
+#[doc = "    \"patch\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    },"]
+#[doc = "    \"pin\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    },"]
+#[doc = "    \"unresolved\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"creationTime\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"description\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"from\": {"]
+#[doc = "            \"type\": \"array\","]
+#[doc = "            \"items\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          },"]
+#[doc = "          \"id\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"isPatchable\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"isPinnable\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"isRuntime\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"isUpgradable\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"language\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"license\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"name\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"packageManager\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"packageName\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"publicationTime\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"semver\": {"]
+#[doc = "            \"type\": \"object\","]
+#[doc = "            \"properties\": {"]
+#[doc = "              \"vulnerable\": {"]
+#[doc = "                \"type\": \"array\","]
+#[doc = "                \"items\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          },"]
+#[doc = "          \"severity\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"severityWithCritical\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"title\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"type\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"upgradePath\": {"]
+#[doc = "            \"type\": \"array\","]
+#[doc = "            \"items\": {"]
+#[doc = "              \"type\": ["]
+#[doc = "                \"boolean\","]
+#[doc = "                \"string\""]
+#[doc = "              ]"]
+#[doc = "            }"]
+#[doc = "          },"]
+#[doc = "          \"version\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"upgrade\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"ch.qos.logback:logback-core@1.5.13\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"upgradeTo\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"upgrades\": {"]
+#[doc = "              \"type\": \"array\","]
+#[doc = "              \"items\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"vulns\": {"]
+#[doc = "              \"type\": \"array\","]
+#[doc = "              \"items\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"org.apache.tomcat.embed:tomcat-embed-core@10.1.46\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"upgradeTo\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"upgrades\": {"]
+#[doc = "              \"type\": \"array\","]
+#[doc = "              \"items\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              }"]
+#[doc = "            },"]
+#[doc = "            \"vulns\": {"]
+#[doc = "              \"type\": \"array\","]
+#[doc = "              \"items\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemRemediation {
     #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
     pub ignore: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
@@ -3187,99 +3187,99 @@ impl ::std::default::Default for SnykContainerApplicationsItemRemediation {
         }
     }
 }
-///`SnykContainerApplicationsItemRemediationUnresolvedItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "creationTime": {
-///      "type": "string"
-///    },
-///    "description": {
-///      "type": "string"
-///    },
-///    "from": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    },
-///    "id": {
-///      "type": "string"
-///    },
-///    "isPatchable": {
-///      "type": "boolean"
-///    },
-///    "isPinnable": {
-///      "type": "boolean"
-///    },
-///    "isRuntime": {
-///      "type": "boolean"
-///    },
-///    "isUpgradable": {
-///      "type": "boolean"
-///    },
-///    "language": {
-///      "type": "string"
-///    },
-///    "license": {
-///      "type": "string"
-///    },
-///    "name": {
-///      "type": "string"
-///    },
-///    "packageManager": {
-///      "type": "string"
-///    },
-///    "packageName": {
-///      "type": "string"
-///    },
-///    "publicationTime": {
-///      "type": "string"
-///    },
-///    "semver": {
-///      "type": "object",
-///      "properties": {
-///        "vulnerable": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "severity": {
-///      "type": "string"
-///    },
-///    "severityWithCritical": {
-///      "type": "string"
-///    },
-///    "title": {
-///      "type": "string"
-///    },
-///    "type": {
-///      "type": "string"
-///    },
-///    "upgradePath": {
-///      "type": "array",
-///      "items": {
-///        "type": [
-///          "boolean",
-///          "string"
-///        ]
-///      }
-///    },
-///    "version": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemRemediationUnresolvedItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"creationTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"description\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"from\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"id\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"isPatchable\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"isPinnable\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"isRuntime\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"isUpgradable\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"language\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"license\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"name\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"packageManager\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"packageName\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"publicationTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"semver\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"vulnerable\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severityWithCritical\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"title\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"type\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"upgradePath\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": ["]
+#[doc = "          \"boolean\","]
+#[doc = "          \"string\""]
+#[doc = "        ]"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"version\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemRemediationUnresolvedItem {
     #[serde(
         rename = "creationTime",
@@ -3403,25 +3403,25 @@ impl ::std::default::Default for SnykContainerApplicationsItemRemediationUnresol
         }
     }
 }
-///`SnykContainerApplicationsItemRemediationUnresolvedItemSemver`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "vulnerable": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemRemediationUnresolvedItemSemver`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"vulnerable\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemRemediationUnresolvedItemSemver {
     #[serde(default, skip_serializing_if = "::std::vec::Vec::is_empty")]
     pub vulnerable: ::std::vec::Vec<::std::string::String>,
@@ -3440,20 +3440,20 @@ impl ::std::default::Default for SnykContainerApplicationsItemRemediationUnresol
         }
     }
 }
-///`SnykContainerApplicationsItemRemediationUnresolvedItemUpgradePathItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": [
-///    "boolean",
-///    "string"
-///  ]
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemRemediationUnresolvedItemUpgradePathItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": ["]
+#[doc = "    \"boolean\","]
+#[doc = "    \"string\""]
+#[doc = "  ]"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 #[serde(untagged)]
 pub enum SnykContainerApplicationsItemRemediationUnresolvedItemUpgradePathItem {
     Boolean(bool),
@@ -3481,59 +3481,59 @@ impl ::std::convert::From<bool>
         Self::Boolean(value)
     }
 }
-///`SnykContainerApplicationsItemRemediationUpgrade`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "ch.qos.logback:logback-core@1.5.13": {
-///      "type": "object",
-///      "properties": {
-///        "upgradeTo": {
-///          "type": "string"
-///        },
-///        "upgrades": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        },
-///        "vulns": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "org.apache.tomcat.embed:tomcat-embed-core@10.1.46": {
-///      "type": "object",
-///      "properties": {
-///        "upgradeTo": {
-///          "type": "string"
-///        },
-///        "upgrades": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        },
-///        "vulns": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemRemediationUpgrade`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"ch.qos.logback:logback-core@1.5.13\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"upgradeTo\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"upgrades\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"vulns\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"org.apache.tomcat.embed:tomcat-embed-core@10.1.46\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"upgradeTo\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"upgrades\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"vulns\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemRemediationUpgrade {
     #[serde(
         rename = "ch.qos.logback:logback-core@1.5.13",
@@ -3567,34 +3567,34 @@ impl ::std::default::Default for SnykContainerApplicationsItemRemediationUpgrade
         }
     }
 }
-///`SnykContainerApplicationsItemRemediationUpgradeChQosLogbackLogbackCore1513`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "upgradeTo": {
-///      "type": "string"
-///    },
-///    "upgrades": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    },
-///    "vulns": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemRemediationUpgradeChQosLogbackLogbackCore1513`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"upgradeTo\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"upgrades\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"vulns\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemRemediationUpgradeChQosLogbackLogbackCore1513 {
     #[serde(
         rename = "upgradeTo",
@@ -3629,34 +3629,34 @@ impl ::std::default::Default
         }
     }
 }
-///`SnykContainerApplicationsItemRemediationUpgradeOrgApacheTomcatEmbedTomcatEmbedCore10146`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "upgradeTo": {
-///      "type": "string"
-///    },
-///    "upgrades": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    },
-///    "vulns": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerApplicationsItemRemediationUpgradeOrgApacheTomcatEmbedTomcatEmbedCore10146`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"upgradeTo\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"upgrades\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"vulns\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerApplicationsItemRemediationUpgradeOrgApacheTomcatEmbedTomcatEmbedCore10146 {
     #[serde(
         rename = "upgradeTo",
@@ -3675,7 +3675,7 @@ impl
     > for SnykContainerApplicationsItemRemediationUpgradeOrgApacheTomcatEmbedTomcatEmbedCore10146
 {
     fn from(
-        value: &SnykContainerApplicationsItemRemediationUpgradeOrgApacheTomcatEmbedTomcatEmbedCore10146,
+        value : & SnykContainerApplicationsItemRemediationUpgradeOrgApacheTomcatEmbedTomcatEmbedCore10146,
     ) -> Self {
         value.clone()
     }
@@ -3691,63 +3691,63 @@ impl ::std::default::Default
         }
     }
 }
-///`SnykContainerDocker`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "baseImage": {
-///      "type": "string"
-///    },
-///    "baseImageRemediation": {
-///      "type": "object",
-///      "properties": {
-///        "advice": {
-///          "type": "array",
-///          "items": {
-///            "type": "object",
-///            "properties": {
-///              "bold": {
-///                "type": "boolean"
-///              },
-///              "message": {
-///                "type": "string"
-///              }
-///            }
-///          }
-///        },
-///        "code": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "binariesVulns": {
-///      "type": "object",
-///      "properties": {
-///        "affectedPkgs": {
-///          "type": "object"
-///        },
-///        "issuesData": {
-///          "type": "object"
-///        }
-///      }
-///    },
-///    "os": {
-///      "type": "object",
-///      "properties": {
-///        "prettyName": {
-///          "type": "string"
-///        }
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerDocker`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"baseImage\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"baseImageRemediation\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"advice\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"object\","]
+#[doc = "            \"properties\": {"]
+#[doc = "              \"bold\": {"]
+#[doc = "                \"type\": \"boolean\""]
+#[doc = "              },"]
+#[doc = "              \"message\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"code\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"binariesVulns\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"affectedPkgs\": {"]
+#[doc = "          \"type\": \"object\""]
+#[doc = "        },"]
+#[doc = "        \"issuesData\": {"]
+#[doc = "          \"type\": \"object\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"os\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"prettyName\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerDocker {
     #[serde(
         rename = "baseImage",
@@ -3785,36 +3785,36 @@ impl ::std::default::Default for SnykContainerDocker {
         }
     }
 }
-///`SnykContainerDockerBaseImageRemediation`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "advice": {
-///      "type": "array",
-///      "items": {
-///        "type": "object",
-///        "properties": {
-///          "bold": {
-///            "type": "boolean"
-///          },
-///          "message": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "code": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerDockerBaseImageRemediation`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"advice\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"bold\": {"]
+#[doc = "            \"type\": \"boolean\""]
+#[doc = "          },"]
+#[doc = "          \"message\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"code\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerDockerBaseImageRemediation {
     #[serde(default, skip_serializing_if = "::std::vec::Vec::is_empty")]
     pub advice: ::std::vec::Vec<SnykContainerDockerBaseImageRemediationAdviceItem>,
@@ -3836,25 +3836,25 @@ impl ::std::default::Default for SnykContainerDockerBaseImageRemediation {
         }
     }
 }
-///`SnykContainerDockerBaseImageRemediationAdviceItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "bold": {
-///      "type": "boolean"
-///    },
-///    "message": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerDockerBaseImageRemediationAdviceItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"bold\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"message\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerDockerBaseImageRemediationAdviceItem {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub bold: ::std::option::Option<bool>,
@@ -3876,25 +3876,25 @@ impl ::std::default::Default for SnykContainerDockerBaseImageRemediationAdviceIt
         }
     }
 }
-///`SnykContainerDockerBinariesVulns`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "affectedPkgs": {
-///      "type": "object"
-///    },
-///    "issuesData": {
-///      "type": "object"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerDockerBinariesVulns`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"affectedPkgs\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    },"]
+#[doc = "    \"issuesData\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerDockerBinariesVulns {
     #[serde(
         rename = "affectedPkgs",
@@ -3922,22 +3922,22 @@ impl ::std::default::Default for SnykContainerDockerBinariesVulns {
         }
     }
 }
-///`SnykContainerDockerOs`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "prettyName": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerDockerOs`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"prettyName\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerDockerOs {
     #[serde(
         rename = "prettyName",
@@ -3958,251 +3958,251 @@ impl ::std::default::Default for SnykContainerDockerOs {
         }
     }
 }
-///`SnykContainerLicensesPolicy`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "orgLicenseRules": {
-///      "type": "object",
-///      "properties": {
-///        "AGPL-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "AGPL-3.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "Artistic-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "Artistic-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "CDDL-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "CPOL-1.02": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "EPL-1.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "GPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "GPL-3.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "LGPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "LGPL-2.1": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "LGPL-3.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "MPL-1.1": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "MPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "MS-RL": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "SimPL-2.0": {
-///          "type": "object",
-///          "properties": {
-///            "instructions": {
-///              "type": "string"
-///            },
-///            "licenseType": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        }
-///      }
-///    },
-///    "severities": {
-///      "type": "object"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicy`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"orgLicenseRules\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"AGPL-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"AGPL-3.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"Artistic-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"Artistic-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"CDDL-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"CPOL-1.02\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"EPL-1.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"GPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"GPL-3.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"LGPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"LGPL-2.1\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"LGPL-3.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"MPL-1.1\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"MPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"MS-RL\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"SimPL-2.0\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"instructions\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"licenseType\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"severities\": {"]
+#[doc = "      \"type\": \"object\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicy {
     #[serde(
         rename = "orgLicenseRules",
@@ -4226,243 +4226,243 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRules`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "AGPL-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "AGPL-3.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "Artistic-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "Artistic-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "CDDL-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "CPOL-1.02": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "EPL-1.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "GPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "GPL-3.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "LGPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "LGPL-2.1": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "LGPL-3.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "MPL-1.1": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "MPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "MS-RL": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "SimPL-2.0": {
-///      "type": "object",
-///      "properties": {
-///        "instructions": {
-///          "type": "string"
-///        },
-///        "licenseType": {
-///          "type": "string"
-///        },
-///        "severity": {
-///          "type": "string"
-///        }
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRules`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"AGPL-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"AGPL-3.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"Artistic-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"Artistic-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"CDDL-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"CPOL-1.02\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"EPL-1.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"GPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"GPL-3.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"LGPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"LGPL-2.1\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"LGPL-3.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"MPL-1.1\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"MPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"MS-RL\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"SimPL-2.0\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"instructions\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"licenseType\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"severity\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRules {
     #[serde(
         rename = "AGPL-1.0",
@@ -4590,28 +4590,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRules {
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesAgpl10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesAgpl10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesAgpl10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4640,28 +4640,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesAgpl1
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesAgpl30`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesAgpl30`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesAgpl30 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4690,28 +4690,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesAgpl3
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesArtistic10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesArtistic10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesArtistic10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4740,28 +4740,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesArtis
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesArtistic20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesArtistic20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesArtistic20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4790,28 +4790,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesArtis
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesCddl10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesCddl10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesCddl10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4840,28 +4840,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesCddl1
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesCpol102`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesCpol102`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesCpol102 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4890,28 +4890,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesCpol1
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesEpl10`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesEpl10`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesEpl10 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4940,28 +4940,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesEpl10
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesGpl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesGpl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesGpl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -4990,28 +4990,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesGpl20
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesGpl30`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesGpl30`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesGpl30 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5040,28 +5040,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesGpl30
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesLgpl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesLgpl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesLgpl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5090,28 +5090,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesLgpl2
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesLgpl21`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesLgpl21`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesLgpl21 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5140,28 +5140,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesLgpl2
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesLgpl30`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesLgpl30`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesLgpl30 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5190,28 +5190,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesLgpl3
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesMpl11`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesMpl11`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesMpl11 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5240,28 +5240,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesMpl11
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesMpl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesMpl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesMpl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5290,28 +5290,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesMpl20
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesMsRl`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesMsRl`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesMsRl {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5340,28 +5340,28 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesMsRl 
         }
     }
 }
-///`SnykContainerLicensesPolicyOrgLicenseRulesSimPl20`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "instructions": {
-///      "type": "string"
-///    },
-///    "licenseType": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`SnykContainerLicensesPolicyOrgLicenseRulesSimPl20`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"instructions\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"licenseType\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct SnykContainerLicensesPolicyOrgLicenseRulesSimPl20 {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub instructions: ::std::option::Option<::std::string::String>,
@@ -5390,306 +5390,306 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesSimPl
         }
     }
 }
-///`Vulnerabilities`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "array",
-///  "items": {
-///    "type": "object",
-///    "required": [
-///      "severity"
-///    ],
-///    "properties": {
-///      "CVSSv3": {
-///        "type": "string"
-///      },
-///      "alternativeIds": {
-///        "type": "array"
-///      },
-///      "cpes": {
-///        "type": "array"
-///      },
-///      "creationTime": {
-///        "type": "string"
-///      },
-///      "credit": {
-///        "type": "array",
-///        "items": {
-///          "type": "string"
-///        }
-///      },
-///      "cvssDetails": {
-///        "type": "array",
-///        "items": {
-///          "type": "object",
-///          "properties": {
-///            "assigner": {
-///              "type": "string"
-///            },
-///            "cvssV3BaseScore": {
-///              "type": "number"
-///            },
-///            "cvssV3Vector": {
-///              "type": "string"
-///            },
-///            "modificationTime": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            }
-///          }
-///        }
-///      },
-///      "cvssScore": {
-///        "type": "number"
-///      },
-///      "cvssSources": {
-///        "type": "array",
-///        "items": {
-///          "type": "object",
-///          "properties": {
-///            "assigner": {
-///              "type": "string"
-///            },
-///            "baseScore": {
-///              "type": "number"
-///            },
-///            "cvssVersion": {
-///              "type": "string"
-///            },
-///            "modificationTime": {
-///              "type": "string"
-///            },
-///            "severity": {
-///              "type": "string"
-///            },
-///            "type": {
-///              "type": "string"
-///            },
-///            "vector": {
-///              "type": "string"
-///            }
-///          }
-///        }
-///      },
-///      "description": {
-///        "type": "string"
-///      },
-///      "disclosureTime": {
-///        "type": "string"
-///      },
-///      "dockerBaseImage": {
-///        "type": "string"
-///      },
-///      "epssDetails": {
-///        "type": "object",
-///        "properties": {
-///          "modelVersion": {
-///            "type": "string"
-///          },
-///          "percentile": {
-///            "type": "string"
-///          },
-///          "probability": {
-///            "type": "string"
-///          }
-///        }
-///      },
-///      "exploit": {
-///        "type": "string"
-///      },
-///      "exploitDetails": {
-///        "type": "object",
-///        "properties": {
-///          "maturityLevels": {
-///            "type": "array",
-///            "items": {
-///              "type": "object",
-///              "properties": {
-///                "format": {
-///                  "type": "string"
-///                },
-///                "level": {
-///                  "type": "string"
-///                },
-///                "type": {
-///                  "type": "string"
-///                }
-///              }
-///            }
-///          },
-///          "sources": {
-///            "type": "array"
-///          }
-///        }
-///      },
-///      "fixedIn": {
-///        "type": "array",
-///        "items": {
-///          "type": "string"
-///        }
-///      },
-///      "from": {
-///        "type": "array",
-///        "items": {
-///          "type": "string"
-///        }
-///      },
-///      "functions": {
-///        "type": "array"
-///      },
-///      "functions_new": {
-///        "type": "array"
-///      },
-///      "id": {
-///        "type": "string"
-///      },
-///      "identifiers": {
-///        "type": "object",
-///        "properties": {
-///          "CVE": {
-///            "type": "array",
-///            "items": {
-///              "type": "string"
-///            }
-///          },
-///          "CWE": {
-///            "type": "array",
-///            "items": {
-///              "type": "string"
-///            }
-///          }
-///        },
-///        "ALTERNATIVE": {
-///          "type": "array"
-///        }
-///      },
-///      "insights": {
-///        "type": "object",
-///        "properties": {
-///          "triageAdvice": {
-///            "type": "null"
-///          }
-///        }
-///      },
-///      "isDisputed": {
-///        "type": "boolean"
-///      },
-///      "isPatchable": {
-///        "type": "boolean"
-///      },
-///      "isUpgradable": {
-///        "type": "boolean"
-///      },
-///      "language": {
-///        "type": "string"
-///      },
-///      "malicious": {
-///        "type": "boolean"
-///      },
-///      "mavenModuleName": {
-///        "type": "object",
-///        "properties": {
-///          "artifactId": {
-///            "type": "string"
-///          },
-///          "groupId": {
-///            "type": "string"
-///          }
-///        }
-///      },
-///      "modificationTime": {
-///        "type": "string"
-///      },
-///      "moduleName": {
-///        "type": "string"
-///      },
-///      "name": {
-///        "type": "string"
-///      },
-///      "nvdSeverity": {
-///        "type": "string"
-///      },
-///      "packageManager": {
-///        "type": "string"
-///      },
-///      "packageName": {
-///        "type": "string"
-///      },
-///      "patches": {
-///        "type": "array"
-///      },
-///      "proprietary": {
-///        "type": "boolean"
-///      },
-///      "publicationTime": {
-///        "type": "string"
-///      },
-///      "references": {
-///        "type": "array",
-///        "items": {
-///          "type": "object",
-///          "properties": {
-///            "title": {
-///              "type": "string"
-///            },
-///            "url": {
-///              "type": "string"
-///            }
-///          }
-///        }
-///      },
-///      "relativeImportance": {
-///        "type": "string"
-///      },
-///      "semver": {
-///        "type": "object",
-///        "properties": {
-///          "vulnerable": {
-///            "type": "array",
-///            "items": {
-///              "type": "string"
-///            }
-///          }
-///        }
-///      },
-///      "severity": {
-///        "type": "string"
-///      },
-///      "severityBasedOn": {
-///        "type": "string"
-///      },
-///      "severityWithCritical": {
-///        "type": "string"
-///      },
-///      "socialTrendAlert": {
-///        "type": "boolean"
-///      },
-///      "title": {
-///        "type": "string"
-///      },
-///      "upgradePath": {
-///        "type": "array",
-///        "items": {
-///          "type": [
-///            "boolean",
-///            "string"
-///          ]
-///        }
-///      },
-///      "version": {
-///        "type": "string"
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`Vulnerabilities`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"array\","]
+#[doc = "  \"items\": {"]
+#[doc = "    \"type\": \"object\","]
+#[doc = "    \"required\": ["]
+#[doc = "      \"severity\""]
+#[doc = "    ],"]
+#[doc = "    \"properties\": {"]
+#[doc = "      \"CVSSv3\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"alternativeIds\": {"]
+#[doc = "        \"type\": \"array\""]
+#[doc = "      },"]
+#[doc = "      \"cpes\": {"]
+#[doc = "        \"type\": \"array\""]
+#[doc = "      },"]
+#[doc = "      \"creationTime\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"credit\": {"]
+#[doc = "        \"type\": \"array\","]
+#[doc = "        \"items\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"cvssDetails\": {"]
+#[doc = "        \"type\": \"array\","]
+#[doc = "        \"items\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"assigner\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"cvssV3BaseScore\": {"]
+#[doc = "              \"type\": \"number\""]
+#[doc = "            },"]
+#[doc = "            \"cvssV3Vector\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"modificationTime\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"cvssScore\": {"]
+#[doc = "        \"type\": \"number\""]
+#[doc = "      },"]
+#[doc = "      \"cvssSources\": {"]
+#[doc = "        \"type\": \"array\","]
+#[doc = "        \"items\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"assigner\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"baseScore\": {"]
+#[doc = "              \"type\": \"number\""]
+#[doc = "            },"]
+#[doc = "            \"cvssVersion\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"modificationTime\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"severity\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"type\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"vector\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"description\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"disclosureTime\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"dockerBaseImage\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"epssDetails\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"modelVersion\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"percentile\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"probability\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"exploit\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"exploitDetails\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"maturityLevels\": {"]
+#[doc = "            \"type\": \"array\","]
+#[doc = "            \"items\": {"]
+#[doc = "              \"type\": \"object\","]
+#[doc = "              \"properties\": {"]
+#[doc = "                \"format\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"level\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                },"]
+#[doc = "                \"type\": {"]
+#[doc = "                  \"type\": \"string\""]
+#[doc = "                }"]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          },"]
+#[doc = "          \"sources\": {"]
+#[doc = "            \"type\": \"array\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"fixedIn\": {"]
+#[doc = "        \"type\": \"array\","]
+#[doc = "        \"items\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"from\": {"]
+#[doc = "        \"type\": \"array\","]
+#[doc = "        \"items\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"functions\": {"]
+#[doc = "        \"type\": \"array\""]
+#[doc = "      },"]
+#[doc = "      \"functions_new\": {"]
+#[doc = "        \"type\": \"array\""]
+#[doc = "      },"]
+#[doc = "      \"id\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"identifiers\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"CVE\": {"]
+#[doc = "            \"type\": \"array\","]
+#[doc = "            \"items\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          },"]
+#[doc = "          \"CWE\": {"]
+#[doc = "            \"type\": \"array\","]
+#[doc = "            \"items\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"ALTERNATIVE\": {"]
+#[doc = "          \"type\": \"array\""]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"insights\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"triageAdvice\": {"]
+#[doc = "            \"type\": \"null\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"isDisputed\": {"]
+#[doc = "        \"type\": \"boolean\""]
+#[doc = "      },"]
+#[doc = "      \"isPatchable\": {"]
+#[doc = "        \"type\": \"boolean\""]
+#[doc = "      },"]
+#[doc = "      \"isUpgradable\": {"]
+#[doc = "        \"type\": \"boolean\""]
+#[doc = "      },"]
+#[doc = "      \"language\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"malicious\": {"]
+#[doc = "        \"type\": \"boolean\""]
+#[doc = "      },"]
+#[doc = "      \"mavenModuleName\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"artifactId\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"groupId\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"modificationTime\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"moduleName\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"name\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"nvdSeverity\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"packageManager\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"packageName\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"patches\": {"]
+#[doc = "        \"type\": \"array\""]
+#[doc = "      },"]
+#[doc = "      \"proprietary\": {"]
+#[doc = "        \"type\": \"boolean\""]
+#[doc = "      },"]
+#[doc = "      \"publicationTime\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"references\": {"]
+#[doc = "        \"type\": \"array\","]
+#[doc = "        \"items\": {"]
+#[doc = "          \"type\": \"object\","]
+#[doc = "          \"properties\": {"]
+#[doc = "            \"title\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            },"]
+#[doc = "            \"url\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"relativeImportance\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"semver\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"vulnerable\": {"]
+#[doc = "            \"type\": \"array\","]
+#[doc = "            \"items\": {"]
+#[doc = "              \"type\": \"string\""]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"severity\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"severityBasedOn\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"severityWithCritical\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"socialTrendAlert\": {"]
+#[doc = "        \"type\": \"boolean\""]
+#[doc = "      },"]
+#[doc = "      \"title\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      },"]
+#[doc = "      \"upgradePath\": {"]
+#[doc = "        \"type\": \"array\","]
+#[doc = "        \"items\": {"]
+#[doc = "          \"type\": ["]
+#[doc = "            \"boolean\","]
+#[doc = "            \"string\""]
+#[doc = "          ]"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"version\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 #[serde(transparent)]
 pub struct Vulnerabilities(pub ::std::vec::Vec<VulnerabilitiesItem>);
 impl ::std::ops::Deref for Vulnerabilities {
@@ -5713,303 +5713,303 @@ impl ::std::convert::From<::std::vec::Vec<VulnerabilitiesItem>> for Vulnerabilit
         Self(value)
     }
 }
-///`VulnerabilitiesItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "required": [
-///    "severity"
-///  ],
-///  "properties": {
-///    "CVSSv3": {
-///      "type": "string"
-///    },
-///    "alternativeIds": {
-///      "type": "array"
-///    },
-///    "cpes": {
-///      "type": "array"
-///    },
-///    "creationTime": {
-///      "type": "string"
-///    },
-///    "credit": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    },
-///    "cvssDetails": {
-///      "type": "array",
-///      "items": {
-///        "type": "object",
-///        "properties": {
-///          "assigner": {
-///            "type": "string"
-///          },
-///          "cvssV3BaseScore": {
-///            "type": "number"
-///          },
-///          "cvssV3Vector": {
-///            "type": "string"
-///          },
-///          "modificationTime": {
-///            "type": "string"
-///          },
-///          "severity": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "cvssScore": {
-///      "type": "number"
-///    },
-///    "cvssSources": {
-///      "type": "array",
-///      "items": {
-///        "type": "object",
-///        "properties": {
-///          "assigner": {
-///            "type": "string"
-///          },
-///          "baseScore": {
-///            "type": "number"
-///          },
-///          "cvssVersion": {
-///            "type": "string"
-///          },
-///          "modificationTime": {
-///            "type": "string"
-///          },
-///          "severity": {
-///            "type": "string"
-///          },
-///          "type": {
-///            "type": "string"
-///          },
-///          "vector": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "description": {
-///      "type": "string"
-///    },
-///    "disclosureTime": {
-///      "type": "string"
-///    },
-///    "dockerBaseImage": {
-///      "type": "string"
-///    },
-///    "epssDetails": {
-///      "type": "object",
-///      "properties": {
-///        "modelVersion": {
-///          "type": "string"
-///        },
-///        "percentile": {
-///          "type": "string"
-///        },
-///        "probability": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "exploit": {
-///      "type": "string"
-///    },
-///    "exploitDetails": {
-///      "type": "object",
-///      "properties": {
-///        "maturityLevels": {
-///          "type": "array",
-///          "items": {
-///            "type": "object",
-///            "properties": {
-///              "format": {
-///                "type": "string"
-///              },
-///              "level": {
-///                "type": "string"
-///              },
-///              "type": {
-///                "type": "string"
-///              }
-///            }
-///          }
-///        },
-///        "sources": {
-///          "type": "array"
-///        }
-///      }
-///    },
-///    "fixedIn": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    },
-///    "from": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    },
-///    "functions": {
-///      "type": "array"
-///    },
-///    "functions_new": {
-///      "type": "array"
-///    },
-///    "id": {
-///      "type": "string"
-///    },
-///    "identifiers": {
-///      "type": "object",
-///      "properties": {
-///        "CVE": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        },
-///        "CWE": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        }
-///      },
-///      "ALTERNATIVE": {
-///        "type": "array"
-///      }
-///    },
-///    "insights": {
-///      "type": "object",
-///      "properties": {
-///        "triageAdvice": {
-///          "type": "null"
-///        }
-///      }
-///    },
-///    "isDisputed": {
-///      "type": "boolean"
-///    },
-///    "isPatchable": {
-///      "type": "boolean"
-///    },
-///    "isUpgradable": {
-///      "type": "boolean"
-///    },
-///    "language": {
-///      "type": "string"
-///    },
-///    "malicious": {
-///      "type": "boolean"
-///    },
-///    "mavenModuleName": {
-///      "type": "object",
-///      "properties": {
-///        "artifactId": {
-///          "type": "string"
-///        },
-///        "groupId": {
-///          "type": "string"
-///        }
-///      }
-///    },
-///    "modificationTime": {
-///      "type": "string"
-///    },
-///    "moduleName": {
-///      "type": "string"
-///    },
-///    "name": {
-///      "type": "string"
-///    },
-///    "nvdSeverity": {
-///      "type": "string"
-///    },
-///    "packageManager": {
-///      "type": "string"
-///    },
-///    "packageName": {
-///      "type": "string"
-///    },
-///    "patches": {
-///      "type": "array"
-///    },
-///    "proprietary": {
-///      "type": "boolean"
-///    },
-///    "publicationTime": {
-///      "type": "string"
-///    },
-///    "references": {
-///      "type": "array",
-///      "items": {
-///        "type": "object",
-///        "properties": {
-///          "title": {
-///            "type": "string"
-///          },
-///          "url": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "relativeImportance": {
-///      "type": "string"
-///    },
-///    "semver": {
-///      "type": "object",
-///      "properties": {
-///        "vulnerable": {
-///          "type": "array",
-///          "items": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "severity": {
-///      "type": "string"
-///    },
-///    "severityBasedOn": {
-///      "type": "string"
-///    },
-///    "severityWithCritical": {
-///      "type": "string"
-///    },
-///    "socialTrendAlert": {
-///      "type": "boolean"
-///    },
-///    "title": {
-///      "type": "string"
-///    },
-///    "upgradePath": {
-///      "type": "array",
-///      "items": {
-///        "type": [
-///          "boolean",
-///          "string"
-///        ]
-///      }
-///    },
-///    "version": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"required\": ["]
+#[doc = "    \"severity\""]
+#[doc = "  ],"]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"CVSSv3\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"alternativeIds\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    },"]
+#[doc = "    \"cpes\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    },"]
+#[doc = "    \"creationTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"credit\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"cvssDetails\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"assigner\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"cvssV3BaseScore\": {"]
+#[doc = "            \"type\": \"number\""]
+#[doc = "          },"]
+#[doc = "          \"cvssV3Vector\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"modificationTime\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"severity\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"cvssScore\": {"]
+#[doc = "      \"type\": \"number\""]
+#[doc = "    },"]
+#[doc = "    \"cvssSources\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"assigner\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"baseScore\": {"]
+#[doc = "            \"type\": \"number\""]
+#[doc = "          },"]
+#[doc = "          \"cvssVersion\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"modificationTime\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"severity\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"type\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"vector\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"description\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"disclosureTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"dockerBaseImage\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"epssDetails\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"modelVersion\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"percentile\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"probability\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"exploit\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"exploitDetails\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"maturityLevels\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"object\","]
+#[doc = "            \"properties\": {"]
+#[doc = "              \"format\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"level\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              },"]
+#[doc = "              \"type\": {"]
+#[doc = "                \"type\": \"string\""]
+#[doc = "              }"]
+#[doc = "            }"]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"sources\": {"]
+#[doc = "          \"type\": \"array\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"fixedIn\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"from\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"functions\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    },"]
+#[doc = "    \"functions_new\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    },"]
+#[doc = "    \"id\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"identifiers\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"CVE\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        },"]
+#[doc = "        \"CWE\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      },"]
+#[doc = "      \"ALTERNATIVE\": {"]
+#[doc = "        \"type\": \"array\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"insights\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"triageAdvice\": {"]
+#[doc = "          \"type\": \"null\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"isDisputed\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"isPatchable\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"isUpgradable\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"language\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"malicious\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"mavenModuleName\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"artifactId\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        },"]
+#[doc = "        \"groupId\": {"]
+#[doc = "          \"type\": \"string\""]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"modificationTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"moduleName\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"name\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"nvdSeverity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"packageManager\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"packageName\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"patches\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    },"]
+#[doc = "    \"proprietary\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"publicationTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"references\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"title\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"url\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"relativeImportance\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"semver\": {"]
+#[doc = "      \"type\": \"object\","]
+#[doc = "      \"properties\": {"]
+#[doc = "        \"vulnerable\": {"]
+#[doc = "          \"type\": \"array\","]
+#[doc = "          \"items\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severityBasedOn\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severityWithCritical\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"socialTrendAlert\": {"]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
+#[doc = "    \"title\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"upgradePath\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": ["]
+#[doc = "          \"boolean\","]
+#[doc = "          \"string\""]
+#[doc = "        ]"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"version\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItem {
     #[serde(
         rename = "alternativeIds",
@@ -6212,34 +6212,34 @@ impl ::std::convert::From<&VulnerabilitiesItem> for VulnerabilitiesItem {
         value.clone()
     }
 }
-///`VulnerabilitiesItemCvssDetailsItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "assigner": {
-///      "type": "string"
-///    },
-///    "cvssV3BaseScore": {
-///      "type": "number"
-///    },
-///    "cvssV3Vector": {
-///      "type": "string"
-///    },
-///    "modificationTime": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemCvssDetailsItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"assigner\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"cvssV3BaseScore\": {"]
+#[doc = "      \"type\": \"number\""]
+#[doc = "    },"]
+#[doc = "    \"cvssV3Vector\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"modificationTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemCvssDetailsItem {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub assigner: ::std::option::Option<::std::string::String>,
@@ -6282,40 +6282,40 @@ impl ::std::default::Default for VulnerabilitiesItemCvssDetailsItem {
         }
     }
 }
-///`VulnerabilitiesItemCvssSourcesItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "assigner": {
-///      "type": "string"
-///    },
-///    "baseScore": {
-///      "type": "number"
-///    },
-///    "cvssVersion": {
-///      "type": "string"
-///    },
-///    "modificationTime": {
-///      "type": "string"
-///    },
-///    "severity": {
-///      "type": "string"
-///    },
-///    "type": {
-///      "type": "string"
-///    },
-///    "vector": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemCvssSourcesItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"assigner\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"baseScore\": {"]
+#[doc = "      \"type\": \"number\""]
+#[doc = "    },"]
+#[doc = "    \"cvssVersion\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"modificationTime\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"severity\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"type\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"vector\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemCvssSourcesItem {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub assigner: ::std::option::Option<::std::string::String>,
@@ -6368,28 +6368,28 @@ impl ::std::default::Default for VulnerabilitiesItemCvssSourcesItem {
         }
     }
 }
-///`VulnerabilitiesItemEpssDetails`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "modelVersion": {
-///      "type": "string"
-///    },
-///    "percentile": {
-///      "type": "string"
-///    },
-///    "probability": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemEpssDetails`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"modelVersion\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"percentile\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"probability\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemEpssDetails {
     #[serde(
         rename = "modelVersion",
@@ -6416,39 +6416,39 @@ impl ::std::default::Default for VulnerabilitiesItemEpssDetails {
         }
     }
 }
-///`VulnerabilitiesItemExploitDetails`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "maturityLevels": {
-///      "type": "array",
-///      "items": {
-///        "type": "object",
-///        "properties": {
-///          "format": {
-///            "type": "string"
-///          },
-///          "level": {
-///            "type": "string"
-///          },
-///          "type": {
-///            "type": "string"
-///          }
-///        }
-///      }
-///    },
-///    "sources": {
-///      "type": "array"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemExploitDetails`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"maturityLevels\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"object\","]
+#[doc = "        \"properties\": {"]
+#[doc = "          \"format\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"level\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          },"]
+#[doc = "          \"type\": {"]
+#[doc = "            \"type\": \"string\""]
+#[doc = "          }"]
+#[doc = "        }"]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"sources\": {"]
+#[doc = "      \"type\": \"array\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemExploitDetails {
     #[serde(
         rename = "maturityLevels",
@@ -6474,28 +6474,28 @@ impl ::std::default::Default for VulnerabilitiesItemExploitDetails {
         }
     }
 }
-///`VulnerabilitiesItemExploitDetailsMaturityLevelsItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "format": {
-///      "type": "string"
-///    },
-///    "level": {
-///      "type": "string"
-///    },
-///    "type": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemExploitDetailsMaturityLevelsItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"format\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"level\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"type\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemExploitDetailsMaturityLevelsItem {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub format: ::std::option::Option<::std::string::String>,
@@ -6524,34 +6524,34 @@ impl ::std::default::Default for VulnerabilitiesItemExploitDetailsMaturityLevels
         }
     }
 }
-///`VulnerabilitiesItemIdentifiers`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "CVE": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    },
-///    "CWE": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    }
-///  },
-///  "ALTERNATIVE": {
-///    "type": "array"
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemIdentifiers`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"CVE\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    },"]
+#[doc = "    \"CWE\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  },"]
+#[doc = "  \"ALTERNATIVE\": {"]
+#[doc = "    \"type\": \"array\""]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemIdentifiers {
     #[serde(
         rename = "CVE",
@@ -6579,22 +6579,22 @@ impl ::std::default::Default for VulnerabilitiesItemIdentifiers {
         }
     }
 }
-///`VulnerabilitiesItemInsights`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "triageAdvice": {
-///      "type": "null"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemInsights`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"triageAdvice\": {"]
+#[doc = "      \"type\": \"null\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemInsights {
     #[serde(rename = "triageAdvice", default)]
     pub triage_advice: (),
@@ -6611,25 +6611,25 @@ impl ::std::default::Default for VulnerabilitiesItemInsights {
         }
     }
 }
-///`VulnerabilitiesItemMavenModuleName`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "artifactId": {
-///      "type": "string"
-///    },
-///    "groupId": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemMavenModuleName`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"artifactId\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"groupId\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemMavenModuleName {
     #[serde(
         rename = "artifactId",
@@ -6659,25 +6659,25 @@ impl ::std::default::Default for VulnerabilitiesItemMavenModuleName {
         }
     }
 }
-///`VulnerabilitiesItemReferencesItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "title": {
-///      "type": "string"
-///    },
-///    "url": {
-///      "type": "string"
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemReferencesItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"title\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    },"]
+#[doc = "    \"url\": {"]
+#[doc = "      \"type\": \"string\""]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemReferencesItem {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub title: ::std::option::Option<::std::string::String>,
@@ -6699,25 +6699,25 @@ impl ::std::default::Default for VulnerabilitiesItemReferencesItem {
         }
     }
 }
-///`VulnerabilitiesItemSemver`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": "object",
-///  "properties": {
-///    "vulnerable": {
-///      "type": "array",
-///      "items": {
-///        "type": "string"
-///      }
-///    }
-///  }
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemSemver`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": \"object\","]
+#[doc = "  \"properties\": {"]
+#[doc = "    \"vulnerable\": {"]
+#[doc = "      \"type\": \"array\","]
+#[doc = "      \"items\": {"]
+#[doc = "        \"type\": \"string\""]
+#[doc = "      }"]
+#[doc = "    }"]
+#[doc = "  }"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 pub struct VulnerabilitiesItemSemver {
     #[serde(default, skip_serializing_if = "::std::vec::Vec::is_empty")]
     pub vulnerable: ::std::vec::Vec<::std::string::String>,
@@ -6734,20 +6734,20 @@ impl ::std::default::Default for VulnerabilitiesItemSemver {
         }
     }
 }
-///`VulnerabilitiesItemUpgradePathItem`
-///
-/// <details><summary>JSON schema</summary>
-///
-/// ```json
-///{
-///  "type": [
-///    "boolean",
-///    "string"
-///  ]
-///}
-/// ```
-/// </details>
-#[derive(::serde::Deserialize, ::serde::Serialize, Clone, Debug)]
+#[doc = "`VulnerabilitiesItemUpgradePathItem`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"type\": ["]
+#[doc = "    \"boolean\","]
+#[doc = "    \"string\""]
+#[doc = "  ]"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
 #[serde(untagged)]
 pub enum VulnerabilitiesItemUpgradePathItem {
     Boolean(bool),

@@ -8,11 +8,12 @@ allow = [
 ]
 exceptions = [
     { allow = ["Unicode-3.0"], crate = "unicode-ident" },
-    { allow = ["Zlib"], crate = "foldhash" }
+    { allow = ["Zlib"], crate = "foldhash" },
+    { allow = ["BSD-2-Clause"], crate = "Inflector" }
 ]
 
 [bans]
-multiple-versions = "deny"
+multiple-versions = "allow"
 wildcards = "allow"
 
 [sources]
