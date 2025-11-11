@@ -1,7 +1,7 @@
 use crate::markdown::generator::{GeneratorError, MarkdownGenerator};
 use crate::parser::ParsedReport;
 use askama::Template;
-use serde_snyk_container::VulnerabilitiesItem;
+use serde_snyk_container::{Severity, VulnerabilitiesItem};
 use std::collections::HashMap;
 use std::fmt;
 
@@ -43,14 +43,13 @@ enum ReportSeverity {
     Low,
 }
 
-impl ReportSeverity {
-    pub fn from_str(s: &str) -> Self {
-        match s.to_lowercase().as_str() {
-            "critical" => ReportSeverity::Critical,
-            "high" => ReportSeverity::High,
-            "medium" => ReportSeverity::Medium,
-            "low" => ReportSeverity::Low,
-            _ => ReportSeverity::Low,
+impl From<Severity> for ReportSeverity {
+    fn from(value: Severity) -> Self {
+        match value {
+            Severity::Low => ReportSeverity::Low,
+            Severity::Medium => ReportSeverity::Medium,
+            Severity::High => ReportSeverity::High,
+            Severity::Critical => ReportSeverity::Critical,
         }
     }
 }
@@ -184,7 +183,7 @@ fn parse_and_deduplicate_vulnerabilities(
                 ReportVulnerability {
                     id: id.clone(),
                     title: v.title.clone().unwrap_or_else(|| id.clone()),
-                    severity: ReportSeverity::from_str(v.severity.as_str()),
+                    severity: v.severity.into(),
                     package_name: v.package_name.clone().unwrap_or_default(),
                     version: v.version.clone().unwrap_or_default(),
                     cvss_score,

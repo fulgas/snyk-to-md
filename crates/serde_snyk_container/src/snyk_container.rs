@@ -24,6 +24,97 @@ pub mod error {
         }
     }
 }
+#[doc = "`CvssSeverity`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"enum\": ["]
+#[doc = "    \"info\","]
+#[doc = "    \"low\","]
+#[doc = "    \"medium\","]
+#[doc = "    \"high\","]
+#[doc = "    \"critical\""]
+#[doc = "  ]"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(
+    :: serde :: Deserialize,
+    :: serde :: Serialize,
+    Clone,
+    Copy,
+    Debug,
+    Eq,
+    Hash,
+    Ord,
+    PartialEq,
+    PartialOrd,
+)]
+pub enum CvssSeverity {
+    #[serde(rename = "info")]
+    Info,
+    #[serde(rename = "low")]
+    Low,
+    #[serde(rename = "medium")]
+    Medium,
+    #[serde(rename = "high")]
+    High,
+    #[serde(rename = "critical")]
+    Critical,
+}
+impl ::std::convert::From<&Self> for CvssSeverity {
+    fn from(value: &CvssSeverity) -> Self {
+        value.clone()
+    }
+}
+impl ::std::fmt::Display for CvssSeverity {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        match *self {
+            Self::Info => f.write_str("info"),
+            Self::Low => f.write_str("low"),
+            Self::Medium => f.write_str("medium"),
+            Self::High => f.write_str("high"),
+            Self::Critical => f.write_str("critical"),
+        }
+    }
+}
+impl ::std::str::FromStr for CvssSeverity {
+    type Err = self::error::ConversionError;
+    fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+        match value {
+            "info" => Ok(Self::Info),
+            "low" => Ok(Self::Low),
+            "medium" => Ok(Self::Medium),
+            "high" => Ok(Self::High),
+            "critical" => Ok(Self::Critical),
+            _ => Err("invalid value".into()),
+        }
+    }
+}
+impl ::std::convert::TryFrom<&str> for CvssSeverity {
+    type Error = self::error::ConversionError;
+    fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+        value.parse()
+    }
+}
+impl ::std::convert::TryFrom<&::std::string::String> for CvssSeverity {
+    type Error = self::error::ConversionError;
+    fn try_from(
+        value: &::std::string::String,
+    ) -> ::std::result::Result<Self, self::error::ConversionError> {
+        value.parse()
+    }
+}
+impl ::std::convert::TryFrom<::std::string::String> for CvssSeverity {
+    type Error = self::error::ConversionError;
+    fn try_from(
+        value: ::std::string::String,
+    ) -> ::std::result::Result<Self, self::error::ConversionError> {
+        value.parse()
+    }
+}
 #[doc = "`Filtered`"]
 #[doc = r""]
 #[doc = r" <details><summary>JSON schema</summary>"]
@@ -118,6 +209,92 @@ impl ::std::default::Default for IgnoreSettings {
         }
     }
 }
+#[doc = "`Severity`"]
+#[doc = r""]
+#[doc = r" <details><summary>JSON schema</summary>"]
+#[doc = r""]
+#[doc = r" ```json"]
+#[doc = "{"]
+#[doc = "  \"enum\": ["]
+#[doc = "    \"low\","]
+#[doc = "    \"medium\","]
+#[doc = "    \"high\","]
+#[doc = "    \"critical\""]
+#[doc = "  ]"]
+#[doc = "}"]
+#[doc = r" ```"]
+#[doc = r" </details>"]
+#[derive(
+    :: serde :: Deserialize,
+    :: serde :: Serialize,
+    Clone,
+    Copy,
+    Debug,
+    Eq,
+    Hash,
+    Ord,
+    PartialEq,
+    PartialOrd,
+)]
+pub enum Severity {
+    #[serde(rename = "low")]
+    Low,
+    #[serde(rename = "medium")]
+    Medium,
+    #[serde(rename = "high")]
+    High,
+    #[serde(rename = "critical")]
+    Critical,
+}
+impl ::std::convert::From<&Self> for Severity {
+    fn from(value: &Severity) -> Self {
+        value.clone()
+    }
+}
+impl ::std::fmt::Display for Severity {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        match *self {
+            Self::Low => f.write_str("low"),
+            Self::Medium => f.write_str("medium"),
+            Self::High => f.write_str("high"),
+            Self::Critical => f.write_str("critical"),
+        }
+    }
+}
+impl ::std::str::FromStr for Severity {
+    type Err = self::error::ConversionError;
+    fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+        match value {
+            "low" => Ok(Self::Low),
+            "medium" => Ok(Self::Medium),
+            "high" => Ok(Self::High),
+            "critical" => Ok(Self::Critical),
+            _ => Err("invalid value".into()),
+        }
+    }
+}
+impl ::std::convert::TryFrom<&str> for Severity {
+    type Error = self::error::ConversionError;
+    fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+        value.parse()
+    }
+}
+impl ::std::convert::TryFrom<&::std::string::String> for Severity {
+    type Error = self::error::ConversionError;
+    fn try_from(
+        value: &::std::string::String,
+    ) -> ::std::result::Result<Self, self::error::ConversionError> {
+        value.parse()
+    }
+}
+impl ::std::convert::TryFrom<::std::string::String> for Severity {
+    type Error = self::error::ConversionError;
+    fn try_from(
+        value: ::std::string::String,
+    ) -> ::std::result::Result<Self, self::error::ConversionError> {
+        value.parse()
+    }
+}
 #[doc = "Synk Container JSON Schema"]
 #[doc = r""]
 #[doc = r" <details><summary>JSON schema</summary>"]
@@ -187,7 +364,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -201,7 +378,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -215,7 +392,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -229,7 +406,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -243,7 +420,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -257,7 +434,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -271,7 +448,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -285,7 +462,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -299,7 +476,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -313,7 +490,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -327,7 +504,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -341,7 +518,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -355,7 +532,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -369,7 +546,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -383,7 +560,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  },"]
@@ -397,7 +574,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                        \"type\": \"string\""]
 #[doc = "                      },"]
 #[doc = "                      \"severity\": {"]
-#[doc = "                        \"type\": \"string\""]
+#[doc = "                        \"$ref\": \"#/definitions/severity\""]
 #[doc = "                      }"]
 #[doc = "                    }"]
 #[doc = "                  }"]
@@ -500,7 +677,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                      }"]
 #[doc = "                    },"]
 #[doc = "                    \"severity\": {"]
-#[doc = "                      \"type\": \"string\""]
+#[doc = "                      \"$ref\": \"#/definitions/severity\""]
 #[doc = "                    },"]
 #[doc = "                    \"severityWithCritical\": {"]
 #[doc = "                      \"type\": \"string\""]
@@ -674,7 +851,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -688,7 +865,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -702,7 +879,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -716,7 +893,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -730,7 +907,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -744,7 +921,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -758,7 +935,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -772,7 +949,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -786,7 +963,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -800,7 +977,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -814,7 +991,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -828,7 +1005,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -842,7 +1019,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -856,7 +1033,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -870,7 +1047,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -884,7 +1061,7 @@ impl ::std::default::Default for IgnoreSettings {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            }"]
@@ -1067,7 +1244,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1081,7 +1258,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1095,7 +1272,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1109,7 +1286,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1123,7 +1300,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1137,7 +1314,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1151,7 +1328,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1165,7 +1342,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1179,7 +1356,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1193,7 +1370,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1207,7 +1384,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1221,7 +1398,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1235,7 +1412,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1249,7 +1426,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1263,7 +1440,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            },"]
@@ -1277,7 +1454,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                  \"type\": \"string\""]
 #[doc = "                },"]
 #[doc = "                \"severity\": {"]
-#[doc = "                  \"type\": \"string\""]
+#[doc = "                  \"$ref\": \"#/definitions/severity\""]
 #[doc = "                }"]
 #[doc = "              }"]
 #[doc = "            }"]
@@ -1380,7 +1557,7 @@ impl ::std::convert::From<&SnykContainer> for SnykContainer {
 #[doc = "                }"]
 #[doc = "              },"]
 #[doc = "              \"severity\": {"]
-#[doc = "                \"type\": \"string\""]
+#[doc = "                \"$ref\": \"#/definitions/severity\""]
 #[doc = "              },"]
 #[doc = "              \"severityWithCritical\": {"]
 #[doc = "                \"type\": \"string\""]
@@ -1568,7 +1745,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1582,7 +1759,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1596,7 +1773,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1610,7 +1787,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1624,7 +1801,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1638,7 +1815,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1652,7 +1829,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1666,7 +1843,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1680,7 +1857,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1694,7 +1871,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1708,7 +1885,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1722,7 +1899,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1736,7 +1913,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1750,7 +1927,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1764,7 +1941,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -1778,7 +1955,7 @@ impl ::std::convert::From<&SnykContainerApplicationsItem> for SnykContainerAppli
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        }"]
@@ -1836,7 +2013,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1850,7 +2027,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1864,7 +2041,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1878,7 +2055,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1892,7 +2069,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1906,7 +2083,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1920,7 +2097,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1934,7 +2111,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1948,7 +2125,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1962,7 +2139,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1976,7 +2153,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -1990,7 +2167,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -2004,7 +2181,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -2018,7 +2195,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -2032,7 +2209,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -2046,7 +2223,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    }"]
@@ -2213,7 +2390,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2230,7 +2407,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl10 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl10>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl10
@@ -2263,7 +2440,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2280,7 +2457,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl30 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl30>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesAgpl30
@@ -2313,7 +2490,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2330,7 +2507,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic10 
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic10>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic10
@@ -2365,7 +2542,7 @@ impl ::std::default::Default
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2382,7 +2559,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic20 
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic20>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesArtistic20
@@ -2417,7 +2594,7 @@ impl ::std::default::Default
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2434,7 +2611,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCddl10 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCddl10>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCddl10
@@ -2467,7 +2644,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2484,7 +2661,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCpol102 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCpol102>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesCpol102
@@ -2517,7 +2694,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2534,7 +2711,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesEpl10 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesEpl10>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesEpl10
@@ -2567,7 +2744,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2584,7 +2761,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl20>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl20
@@ -2617,7 +2794,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2634,7 +2811,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl30 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl30>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesGpl30
@@ -2667,7 +2844,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2684,7 +2861,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl20>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl20
@@ -2717,7 +2894,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2734,7 +2911,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl21 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl21>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl21
@@ -2767,7 +2944,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2784,7 +2961,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl30 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl30>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesLgpl30
@@ -2817,7 +2994,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2834,7 +3011,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl11 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl11>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl11
@@ -2867,7 +3044,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2884,7 +3061,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl20>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMpl20
@@ -2917,7 +3094,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2934,7 +3111,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMsRl {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMsRl>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesMsRl
@@ -2967,7 +3144,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -2984,7 +3161,7 @@ pub struct SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesSimPl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesSimPl20>
     for SnykContainerApplicationsItemLicensesPolicyOrgLicenseRulesSimPl20
@@ -3081,7 +3258,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemLicensesPolicyOrgL
 #[doc = "            }"]
 #[doc = "          },"]
 #[doc = "          \"severity\": {"]
-#[doc = "            \"type\": \"string\""]
+#[doc = "            \"$ref\": \"#/definitions/severity\""]
 #[doc = "          },"]
 #[doc = "          \"severityWithCritical\": {"]
 #[doc = "            \"type\": \"string\""]
@@ -3252,7 +3429,7 @@ impl ::std::default::Default for SnykContainerApplicationsItemRemediation {
 #[doc = "      }"]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    },"]
 #[doc = "    \"severityWithCritical\": {"]
 #[doc = "      \"type\": \"string\""]
@@ -3344,7 +3521,7 @@ pub struct SnykContainerApplicationsItemRemediationUnresolvedItem {
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub semver: ::std::option::Option<SnykContainerApplicationsItemRemediationUnresolvedItemSemver>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
     #[serde(
         rename = "severityWithCritical",
         default,
@@ -3979,7 +4156,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -3993,7 +4170,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4007,7 +4184,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4021,7 +4198,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4035,7 +4212,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4049,7 +4226,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4063,7 +4240,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4077,7 +4254,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4091,7 +4268,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4105,7 +4282,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4119,7 +4296,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4133,7 +4310,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4147,7 +4324,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4161,7 +4338,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4175,7 +4352,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        },"]
@@ -4189,7 +4366,7 @@ impl ::std::default::Default for SnykContainerDockerOs {
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/severity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        }"]
@@ -4244,7 +4421,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4258,7 +4435,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4272,7 +4449,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4286,7 +4463,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4300,7 +4477,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4314,7 +4491,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4328,7 +4505,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4342,7 +4519,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4356,7 +4533,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4370,7 +4547,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4384,7 +4561,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4398,7 +4575,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4412,7 +4589,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4426,7 +4603,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4440,7 +4617,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    },"]
@@ -4454,7 +4631,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicy {
 #[doc = "          \"type\": \"string\""]
 #[doc = "        },"]
 #[doc = "        \"severity\": {"]
-#[doc = "          \"type\": \"string\""]
+#[doc = "          \"$ref\": \"#/definitions/severity\""]
 #[doc = "        }"]
 #[doc = "      }"]
 #[doc = "    }"]
@@ -4605,7 +4782,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRules {
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4622,7 +4799,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesAgpl10 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesAgpl10>
     for SnykContainerLicensesPolicyOrgLicenseRulesAgpl10
@@ -4655,7 +4832,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesAgpl1
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4672,7 +4849,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesAgpl30 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesAgpl30>
     for SnykContainerLicensesPolicyOrgLicenseRulesAgpl30
@@ -4705,7 +4882,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesAgpl3
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4722,7 +4899,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesArtistic10 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesArtistic10>
     for SnykContainerLicensesPolicyOrgLicenseRulesArtistic10
@@ -4755,7 +4932,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesArtis
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4772,7 +4949,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesArtistic20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesArtistic20>
     for SnykContainerLicensesPolicyOrgLicenseRulesArtistic20
@@ -4805,7 +4982,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesArtis
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4822,7 +4999,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesCddl10 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesCddl10>
     for SnykContainerLicensesPolicyOrgLicenseRulesCddl10
@@ -4855,7 +5032,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesCddl1
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4872,7 +5049,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesCpol102 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesCpol102>
     for SnykContainerLicensesPolicyOrgLicenseRulesCpol102
@@ -4905,7 +5082,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesCpol1
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4922,7 +5099,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesEpl10 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesEpl10>
     for SnykContainerLicensesPolicyOrgLicenseRulesEpl10
@@ -4955,7 +5132,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesEpl10
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -4972,7 +5149,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesGpl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesGpl20>
     for SnykContainerLicensesPolicyOrgLicenseRulesGpl20
@@ -5005,7 +5182,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesGpl20
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5022,7 +5199,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesGpl30 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesGpl30>
     for SnykContainerLicensesPolicyOrgLicenseRulesGpl30
@@ -5055,7 +5232,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesGpl30
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5072,7 +5249,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesLgpl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesLgpl20>
     for SnykContainerLicensesPolicyOrgLicenseRulesLgpl20
@@ -5105,7 +5282,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesLgpl2
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5122,7 +5299,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesLgpl21 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesLgpl21>
     for SnykContainerLicensesPolicyOrgLicenseRulesLgpl21
@@ -5155,7 +5332,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesLgpl2
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5172,7 +5349,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesLgpl30 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesLgpl30>
     for SnykContainerLicensesPolicyOrgLicenseRulesLgpl30
@@ -5205,7 +5382,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesLgpl3
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5222,7 +5399,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesMpl11 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesMpl11>
     for SnykContainerLicensesPolicyOrgLicenseRulesMpl11
@@ -5255,7 +5432,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesMpl11
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5272,7 +5449,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesMpl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesMpl20>
     for SnykContainerLicensesPolicyOrgLicenseRulesMpl20
@@ -5305,7 +5482,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesMpl20
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5322,7 +5499,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesMsRl {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesMsRl>
     for SnykContainerLicensesPolicyOrgLicenseRulesMsRl
@@ -5355,7 +5532,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesMsRl 
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -5372,7 +5549,7 @@ pub struct SnykContainerLicensesPolicyOrgLicenseRulesSimPl20 {
     )]
     pub license_type: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<Severity>,
 }
 impl ::std::convert::From<&SnykContainerLicensesPolicyOrgLicenseRulesSimPl20>
     for SnykContainerLicensesPolicyOrgLicenseRulesSimPl20
@@ -5439,7 +5616,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesSimPl
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/cvssSeverity\""]
 #[doc = "            }"]
 #[doc = "          }"]
 #[doc = "        }"]
@@ -5465,7 +5642,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesSimPl
 #[doc = "              \"type\": \"string\""]
 #[doc = "            },"]
 #[doc = "            \"severity\": {"]
-#[doc = "              \"type\": \"string\""]
+#[doc = "              \"$ref\": \"#/definitions/cvssSeverity\""]
 #[doc = "            },"]
 #[doc = "            \"type\": {"]
 #[doc = "              \"type\": \"string\""]
@@ -5658,7 +5835,7 @@ impl ::std::default::Default for SnykContainerLicensesPolicyOrgLicenseRulesSimPl
 #[doc = "        }"]
 #[doc = "      },"]
 #[doc = "      \"severity\": {"]
-#[doc = "        \"type\": \"string\""]
+#[doc = "        \"$ref\": \"#/definitions/severity\""]
 #[doc = "      },"]
 #[doc = "      \"severityBasedOn\": {"]
 #[doc = "        \"type\": \"string\""]
@@ -5760,7 +5937,7 @@ impl ::std::convert::From<::std::vec::Vec<VulnerabilitiesItem>> for Vulnerabilit
 #[doc = "            \"type\": \"string\""]
 #[doc = "          },"]
 #[doc = "          \"severity\": {"]
-#[doc = "            \"type\": \"string\""]
+#[doc = "            \"$ref\": \"#/definitions/cvssSeverity\""]
 #[doc = "          }"]
 #[doc = "        }"]
 #[doc = "      }"]
@@ -5786,7 +5963,7 @@ impl ::std::convert::From<::std::vec::Vec<VulnerabilitiesItem>> for Vulnerabilit
 #[doc = "            \"type\": \"string\""]
 #[doc = "          },"]
 #[doc = "          \"severity\": {"]
-#[doc = "            \"type\": \"string\""]
+#[doc = "            \"$ref\": \"#/definitions/cvssSeverity\""]
 #[doc = "          },"]
 #[doc = "          \"type\": {"]
 #[doc = "            \"type\": \"string\""]
@@ -5979,7 +6156,7 @@ impl ::std::convert::From<::std::vec::Vec<VulnerabilitiesItem>> for Vulnerabilit
 #[doc = "      }"]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/severity\""]
 #[doc = "    },"]
 #[doc = "    \"severityBasedOn\": {"]
 #[doc = "      \"type\": \"string\""]
@@ -6177,7 +6354,7 @@ pub struct VulnerabilitiesItem {
     pub relative_importance: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub semver: ::std::option::Option<VulnerabilitiesItemSemver>,
-    pub severity: ::std::string::String,
+    pub severity: Severity,
     #[serde(
         rename = "severityBasedOn",
         default,
@@ -6233,7 +6410,7 @@ impl ::std::convert::From<&VulnerabilitiesItem> for VulnerabilitiesItem {
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/cvssSeverity\""]
 #[doc = "    }"]
 #[doc = "  }"]
 #[doc = "}"]
@@ -6262,7 +6439,7 @@ pub struct VulnerabilitiesItemCvssDetailsItem {
     )]
     pub modification_time: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<CvssSeverity>,
 }
 impl ::std::convert::From<&VulnerabilitiesItemCvssDetailsItem>
     for VulnerabilitiesItemCvssDetailsItem
@@ -6303,7 +6480,7 @@ impl ::std::default::Default for VulnerabilitiesItemCvssDetailsItem {
 #[doc = "      \"type\": \"string\""]
 #[doc = "    },"]
 #[doc = "    \"severity\": {"]
-#[doc = "      \"type\": \"string\""]
+#[doc = "      \"$ref\": \"#/definitions/cvssSeverity\""]
 #[doc = "    },"]
 #[doc = "    \"type\": {"]
 #[doc = "      \"type\": \"string\""]
@@ -6338,7 +6515,7 @@ pub struct VulnerabilitiesItemCvssSourcesItem {
     )]
     pub modification_time: ::std::option::Option<::std::string::String>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-    pub severity: ::std::option::Option<::std::string::String>,
+    pub severity: ::std::option::Option<CvssSeverity>,
     #[serde(
         rename = "type",
         default,
