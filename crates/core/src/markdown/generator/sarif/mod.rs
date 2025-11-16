@@ -1,10 +1,8 @@
-mod common_mark;
 mod converter;
-mod gfm;
+mod generator;
 mod types;
 
-use crate::markdown::generator::sarif::common_mark::SarifCommonMarkGenerator;
-use crate::markdown::generator::sarif::gfm::SarifGitHubFlavoredMarkdownGenerator;
+use crate::markdown::generator::sarif::generator::SarifMarkdownGenerator;
 use crate::markdown::generator::{MarkdownFormatFactory, MarkdownGenerator};
 use crate::markdown::MarkdownFormat;
 
@@ -16,11 +14,6 @@ impl MarkdownFormatFactory for SarifMarkdownGeneratorFactory {
         markdown_format: MarkdownFormat,
         with_emoji: bool,
     ) -> Box<dyn MarkdownGenerator> {
-        match markdown_format {
-            MarkdownFormat::CommonMark => Box::new(SarifCommonMarkGenerator::new(with_emoji)),
-            MarkdownFormat::GitHubFlavored => {
-                Box::new(SarifGitHubFlavoredMarkdownGenerator::new(with_emoji))
-            }
-        }
+        Box::new(SarifMarkdownGenerator::new(markdown_format, with_emoji))
     }
 }
