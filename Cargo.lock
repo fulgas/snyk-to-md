@@ -1032,7 +1032,11 @@ name = "serde_snyk_container"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "insta",
+ "public-api",
+ "rustdoc-json",
  "rustfmt-wrapper",
+ "rustup-toolchain",
  "serde",
  "serde_json",
  "typify",
