@@ -1,113 +1,80 @@
-use crate::markdown::generator::{GeneratorError, MarkdownParserFormatFactory};
-use crate::markdown::MarkdownFormat;
-use crate::parser::{ParserError, ParserFormatFactory};
-use crate::parser::{ParserFormat, ParserType};
+use crate::error::{BuilderError, Error};
+use crate::markdown::MarkdownGenerator;
 
+pub mod error;
+pub mod generators;
 pub mod markdown;
-pub mod parser;
 
-#[derive(Debug, thiserror::Error)]
-pub enum BuilderError {
-    #[error("JSON content was not provided")]
-    MissingContent,
-    #[error("Parser type was not specified")]
-    MissingParserType,
-    #[error("Parser format was not specified")]
-    MissingParserFormat,
-    #[error("Markdown format was not specified")]
-    MissingMarkdownFormat,
-    #[error(transparent)]
-    ParseError(#[from] ParserError),
-    #[error(transparent)]
-    GeneratedReportError(#[from] GeneratorError),
-}
-
-#[derive(Debug, thiserror::Error)]
-pub enum Error {
-    #[error(transparent)]
-    ParseError(#[from] ParserError),
-    #[error(transparent)]
-    GeneratedReportError(#[from] GeneratorError),
-}
-
-pub struct ReportProcessor {
-    parser_type: ParserType,
-    parser_format: ParserFormat,
+pub struct ReportProcessor<G: MarkdownGenerator> {
+    generator: G,
     content: String,
-    markdown_format: MarkdownFormat,
-    with_emoji: bool,
 }
 
-impl ReportProcessor {
-    pub fn generate(self) -> anyhow::Result<String, Error> {
-        let parser_report = ParserFormatFactory::create_parser_format(&self.parser_format)
-            .create_parser(self.parser_type)
-            .parse(self.content.as_str())?;
+impl<G: MarkdownGenerator> ReportProcessor<G> {
+    pub fn new(generator: G, content: String) -> Self {
+        Self { generator, content }
+    }
 
-        let template = MarkdownParserFormatFactory::create_generator_format(&self.parser_format)
-            .create_generator(self.markdown_format, self.with_emoji)
-            .generate_markdown_template(&parser_report)?;
-
-        Ok(template)
+    pub fn generate(self) -> Result<String, Error> {
+        let data: G::Input = serde_json::from_str(&self.content)?;
+        let markdown = self.generator.generate_markdown_template(&data)?;
+        Ok(markdown)
     }
 }
 
-#[derive(Default)]
-pub struct ReportProcessorBuilder {
-    parser_type: Option<ParserType>,
-    parser_format: Option<ParserFormat>,
+pub struct ReportProcessorBuilder<G = ()> {
+    generator: G,
     content: Option<String>,
-    markdown_format: Option<MarkdownFormat>,
-    with_emoji: bool,
 }
 
-impl ReportProcessorBuilder {
+impl ReportProcessorBuilder<()> {
     pub fn new() -> Self {
         Self {
-            parser_type: None,
-            parser_format: None,
+            generator: (),
             content: None,
-            markdown_format: None,
-            with_emoji: false,
         }
     }
+}
 
-    pub fn parser_type(mut self, parser_type: ParserType) -> Self {
-        self.parser_type = Some(parser_type);
+impl Default for ReportProcessorBuilder<()> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl ReportProcessorBuilder<()> {
+    pub fn generator<G: MarkdownGenerator>(self, generator: G) -> ReportProcessorBuilder<G> {
+        ReportProcessorBuilder {
+            generator,
+            content: self.content,
+        }
+    }
+}
+
+impl<G: MarkdownGenerator> ReportProcessorBuilder<G> {
+    pub fn content(mut self, content: String) -> Self {
+        self.content = Some(content);
         self
     }
+    pub fn build(self) -> Result<ReportProcessor<G>, BuilderError> {
+        let content = self.content.ok_or(BuilderError::MissingContent)?;
 
-    pub fn parser_format(mut self, parser_format: ParserFormat) -> Self {
-        self.parser_format = Some(parser_format);
-        self
+        Ok(ReportProcessor::new(self.generator, content))
     }
+}
 
-    pub fn content(mut self, content: &str) -> Self {
-        self.content = Some(content.to_string());
-        self
-    }
+#[test]
+fn public_api() {
+    rustup_toolchain::install(public_api::MINIMUM_NIGHTLY_RUST_VERSION).unwrap();
 
-    pub fn markdown_format(mut self, markdown_format: MarkdownFormat) -> Self {
-        self.markdown_format = Some(markdown_format);
-        self
-    }
+    let rustdoc_json = rustdoc_json::Builder::default()
+        .toolchain(public_api::MINIMUM_NIGHTLY_RUST_VERSION)
+        .build()
+        .unwrap();
 
-    pub fn with_emoji(mut self, with_emoji: bool) -> Self {
-        self.with_emoji = with_emoji;
-        self
-    }
+    let public_api = public_api::Builder::from_rustdoc_json(rustdoc_json)
+        .build()
+        .unwrap();
 
-    pub fn build(self) -> Result<ReportProcessor, BuilderError> {
-        Ok(ReportProcessor {
-            parser_type: self.parser_type.ok_or(BuilderError::MissingParserType)?,
-            parser_format: self
-                .parser_format
-                .ok_or(BuilderError::MissingParserFormat)?,
-            content: self.content.ok_or(BuilderError::MissingContent)?,
-            markdown_format: self
-                .markdown_format
-                .ok_or(BuilderError::MissingMarkdownFormat)?,
-            with_emoji: self.with_emoji,
-        })
-    }
+    insta::assert_snapshot!(public_api);
 }

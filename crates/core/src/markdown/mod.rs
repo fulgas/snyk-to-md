@@ -1,14 +1,16 @@
-pub(crate) mod generator;
+use crate::error::GeneratorError;
+use serde::de::DeserializeOwned;
 
-/// Represents the Markdown dialect to use for parsing or rendering.
-///
-/// This enum defines the supported Markdown syntax standards:
-/// - `CommonMark`: The standard CommonMark specification, which is widely adopted as the baseline for Markdown.
-/// - `GitHubFlavored`: GitHub's extended Markdown dialect, which includes additional features such as task lists, fenced code blocks, and GitHub-specific syntax.
-///
-/// The enum is `Debug`, `Clone`, and `Copy`, making it efficient for use in performance-sensitive contexts.
+pub mod json;
+pub mod sarif;
+
 #[derive(Debug, Clone, Copy)]
 pub enum MarkdownFormat {
     CommonMark,
     GitHubFlavored,
+}
+
+pub trait MarkdownGenerator {
+    type Input: DeserializeOwned;
+    fn generate_markdown_template(&self, report: &Self::Input) -> Result<String, GeneratorError>;
 }
