@@ -1,12 +1,6 @@
 use clap::{Parser, Subcommand, ValueEnum};
-use snyk_to_md_core::markdown::MarkdownFormat;
+use sarif_to_md_core::markdown::MarkdownFormat;
 use std::path::PathBuf;
-
-#[derive(Debug, Clone, Subcommand, ValueEnum)]
-pub(crate) enum CliJsonReportType {
-    Container,
-    Code,
-}
 
 #[derive(Debug, Clone, ValueEnum)]
 pub(crate) enum CliOutputFormat {
@@ -35,15 +29,11 @@ pub(crate) enum CliInputFormat {
 
 #[derive(Debug, Subcommand)]
 pub(crate) enum Commands {
-    Json {
-        #[arg(value_enum)]
-        report_type: CliJsonReportType,
-    },
     Sarif,
 }
 
 #[derive(Parser)]
-#[command(name = "snyk-to-md")]
+#[command(name = "sarif-to-md")]
 #[command(about = "Convert Snyk security reports to Markdown format", version)]
 pub(crate) struct Cli {
     /// Input JSON file path

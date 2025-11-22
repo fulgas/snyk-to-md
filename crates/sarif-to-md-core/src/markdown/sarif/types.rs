@@ -34,7 +34,7 @@ pub(in crate::markdown) enum SarifLevel {
 }
 
 impl fmt::Display for SarifLevel {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             SarifLevel::Error => write!(f, "Error"),
             SarifLevel::Warning => write!(f, "Warning"),
@@ -51,6 +51,7 @@ pub(in crate::markdown) struct SarifResultView {
     pub(in crate::markdown) message: String,
     pub(in crate::markdown) locations: Vec<SarifLocation>,
     pub(in crate::markdown) rule_metadata: Option<RuleMetadata>,
+    pub(in crate::markdown) properties: Option<ResultProperties>,
 }
 
 #[derive(Clone, Debug)]
@@ -58,8 +59,18 @@ pub(in crate::markdown) struct RuleMetadata {
     pub(in crate::markdown) name: Option<String>,
     pub(in crate::markdown) description: Option<String>,
     pub(in crate::markdown) help_uri: Option<String>,
-    pub(in crate::markdown) cwe_ids: Vec<String>,
     pub(in crate::markdown) tags: Vec<String>,
+    pub(in crate::markdown) cwe_ids: Vec<String>,
+    pub(in crate::markdown) cve_ids: Vec<String>,
+}
+
+#[derive(Clone, Debug)]
+pub(in crate::markdown) struct ResultProperties {
+    pub(in crate::markdown) issue_confidence: Option<String>,
+    pub(in crate::markdown) precision: Option<String>,
+    pub(in crate::markdown) problem_severity: Option<String>,
+    pub(in crate::markdown) security_severity: Option<String>,
+    pub(in crate::markdown) custom_fields: Vec<(String, String)>,
 }
 
 #[derive(Clone, Debug)]

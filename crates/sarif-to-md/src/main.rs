@@ -1,9 +1,9 @@
-use crate::cli::{Cli, CliJsonReportType, Commands};
+use crate::cli::{Cli, Commands};
 use anyhow::Context;
 use clap::Parser;
-use snyk_to_md_core::generators::{JsonContainerMarkdownGenerator, SarifMarkdownGenerator};
-use snyk_to_md_core::markdown::MarkdownFormat;
-use snyk_to_md_core::ReportProcessorBuilder;
+use sarif_to_md_core::generators::SarifMarkdownGenerator;
+use sarif_to_md_core::markdown::MarkdownFormat;
+use sarif_to_md_core::ReportProcessorBuilder;
 use std::fs;
 
 mod cli;
@@ -19,21 +19,6 @@ fn main() -> anyhow::Result<()> {
     let output_format: MarkdownFormat = cli.output_format.into();
 
     let markdown = match &cli.command {
-        Commands::Json { report_type } => match report_type {
-            CliJsonReportType::Container => ReportProcessorBuilder::new()
-                .generator(JsonContainerMarkdownGenerator::new(
-                    output_format,
-                    with_emoji,
-                ))
-                .content(content)
-                .build()
-                .context("Failed to configure report processor")?
-                .generate()
-                .context("Failed to generate markdown report")?,
-            CliJsonReportType::Code => {
-                todo!()
-            }
-        },
         Commands::Sarif => {
             let processor = ReportProcessorBuilder::new()
                 .generator(SarifMarkdownGenerator::new(output_format, with_emoji))

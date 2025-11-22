@@ -2,23 +2,19 @@
 
 {%- block header -%}
 {%- if with_emoji -%}
-# 🛡️ Security Vulnerability Report (SARIF)
+# 🛡️ SARIF Security Report
 {%- else -%}
-# Security Vulnerability Report (SARIF)
+# SARIF Security Report
 {%- endif -%}
 {%- endblock -%}
 
 {%- block content -%}
 {% for run in runs %}
 {% if is_gfm -%}
-<details open>
-<summary><h2>Run {{ loop.index }} - {{ run.tool_name }}</h2></summary>
-{%- else -%}
-## Run {{ loop.index }} - {{ run.tool_name }}
-{%- endif %}
 
-{% if let Some(tool_version) = run.tool_version %}
-**Version:** {% if is_gfm %}`{{ tool_version }}`{% else %}{{ tool_version }}{% endif %}
+{{ run.tool_name }}{% if let Some(version) = run.tool_version %} v{{ version }}{% endif %}
+{%- else -%}
+## {{ run.tool_name }}{% if let Some(version) = run.tool_version %} v{{ version }}{% endif %}
 {%- endif %}
 
 ### {% if with_emoji %}📊{% endif %} Summary
@@ -38,7 +34,7 @@
 {% if is_gfm -%}
 <details>
 <summary>
-{% call sm::format_severity(result.level, with_emoji) %} <strong>[{{ result.rule_id }}]((https://security.snyk.io/vuln/{{ result.rule_id }})</strong>
+{% call sm::format_severity(result.level, with_emoji) %} [{{ result.rule_id }}]
 {%- if let Some(metadata) = result.rule_metadata %}
 {%- if let Some(name) = metadata.name %} - {{ name }}{%- endif %}
 {%- endif %}
@@ -46,7 +42,7 @@
 
 #### Details
 {% else -%}
-#### {% call sm::format_severity(result.level, with_emoji) %} - [{{ result.rule_id }}](https://security.snyk.io/vuln/{{ result.rule_id }})
+#### {% call sm::format_severity(result.level, with_emoji) %} - {{ result.rule_id }}
 {%- endif %}
 
 {%- if is_gfm %}
@@ -74,6 +70,13 @@
 {%- endfor %}
 {%- endif %}
 
+{%- if metadata.cve_ids.len() > 0 %}
+**CVE IDs:**
+{%- for cve in metadata.cve_ids %}
+- `{{ cve }}`
+{%- endfor %}
+{%- endif %}
+
 {%- if metadata.tags.len() > 0 %}
 **Tags:**
 {%- for tag in metadata.tags %}
@@ -84,6 +87,29 @@
 {%- if let Some(help_uri) = metadata.help_uri %}
 **Documentation:** [View details]({{ help_uri }})
 {%- endif %}
+
+{%- endif %}
+
+{%- if let Some(properties) = result.properties %}
+
+{%- if let Some(confidence) = properties.issue_confidence %}
+**Issue Confidence:** {{ confidence }}
+{%- endif %}
+
+{%- if let Some(precision) = properties.precision %}
+**Precision:** {{ precision }}
+{%- endif %}
+
+{%- if let Some(problem_severity) = properties.problem_severity %}
+**Problem Severity:** {{ problem_severity }}
+{%- endif %}
+
+{%- if properties.custom_fields.len() > 0 %}
+**Additional Properties:**
+{%- for (key, value) in properties.custom_fields %}
+- **{{ key }}:** {{ value }}
+  {%- endfor %}
+  {%- endif %}
 
 {%- endif %}
 

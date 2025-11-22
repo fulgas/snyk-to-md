@@ -1,7 +1,6 @@
 use crate::error::GeneratorError;
 use serde::de::DeserializeOwned;
 
-pub mod json;
 pub mod sarif;
 
 #[derive(Debug, Clone, Copy)]

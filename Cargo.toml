@@ -1,7 +1,6 @@
 [workspace]
 resolver = "2"
 members = [
-    "crates/core",
-    "crates/serde_snyk_container",
-    "crates/snyk-to-md",
+    "crates/sarif-to-md-core",
+    "crates/sarif-to-md",
 ]
