@@ -69,6 +69,7 @@ pub(in crate::markdown) struct ResultProperties {
     pub(in crate::markdown) issue_confidence: Option<String>,
     pub(in crate::markdown) precision: Option<String>,
     pub(in crate::markdown) problem_severity: Option<String>,
+    #[allow(dead_code)]
     pub(in crate::markdown) security_severity: Option<String>,
     pub(in crate::markdown) custom_fields: Vec<(String, String)>,
 }
